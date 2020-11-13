@@ -22,6 +22,7 @@ class UserController extends BaseController {
     router.get("/", this.get);
     router.post("/", this.post);
     router.patch("/:userName", this.patch);
+    router.delete("/", this.delete);
     router.delete("/:userName", this.delete);
 
     return router;
@@ -35,7 +36,13 @@ class UserController extends BaseController {
     try {
       if (!req.params.userName) {
         const user = await this.manager.getAllUser();
-        res.json(user);
+        let resultUser = [];
+        _.pick(
+          user.forEach((user) => {
+            resultUser.push(_.pick(user, ["id", "username", "email"]));
+          })
+        );
+        res.json(resultUser);
       } else {
         const { userName } = req.params;
         const user = await this.manager.getUser(userName);
@@ -43,7 +50,6 @@ class UserController extends BaseController {
           res.status(404).send({ error: "user not found" });
           return;
         }
-
         res.json(_.pick(user, ["id", "username", "email"]));
       }
     } catch (err) {
@@ -72,9 +78,13 @@ class UserController extends BaseController {
     next: NextFunction
   ): Promise<void> => {
     try {
-      const { userId } = req.params;
+      const { userName } = req.params;
       const newUserDetails = req.body;
-      const updatedUser = await this.manager.updateUser(userId, newUserDetails);
+
+      const updatedUser = await this.manager.updateUser(
+        userName,
+        newUserDetails
+      );
 
       res.json(_.pick(updatedUser, ["id", "username"]));
     } catch (err) {
@@ -87,10 +97,10 @@ class UserController extends BaseController {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    const { userId } = req.params;
+    const { userName } = req.params;
 
     try {
-      await this.manager.removeUser(userId);
+      await this.manager.removeUser(userName);
       res.status(200).end();
     } catch (err) {
       next(err);
