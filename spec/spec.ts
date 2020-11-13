@@ -68,7 +68,7 @@ describe("The express server", () => {
         expect(JSON.parse(res.text)).to.deep.equal(testUserData);
       });
 
-      it.skip("POST /api/users", async () => {
+      it("POST /api/users", async () => {
         const res = await request.post("/api/users").send({
           username: "sasaki",
           email: "sasaki@nri.co.jp",
@@ -76,15 +76,16 @@ describe("The express server", () => {
         });
 
         expect(res).to.have.status(201);
+        await tearDownRequest.delete("/api/users/sasaki");
       });
 
-      it("PATCH /api/users:id", async () => {
+      it("PATCH /api/users/:id", async () => {
         const res = await request.patch("/api/users/iwashita").send({
           username: "iwashitaiwashita",
         });
 
         expect(res).to.have.status(200);
-        await tearDownRequest.patch("api/user/iwashitaiwashita").send({
+        await tearDownRequest.patch("/api/users/iwashitaiwashita").send({
           username: "iwashita",
         });
       });
@@ -93,6 +94,11 @@ describe("The express server", () => {
         const res = await request.delete("/api/users/sakai");
 
         expect(res).to.have.status(200);
+        await tearDownRequest.post("/api/users").send({
+          username: "sakai",
+          email: "sakai@nri.co.jp",
+          password: "xxxxxx",
+        });
       });
     });
 
