@@ -5,8 +5,6 @@ import bodyParser from "body-parser";
 import loggerMiddleware from "./middleware/logger";
 import UserController from "./services/users/controller";
 import errorHandler from "./middleware/errorHandler";
-import AuthManager from "./services/auth/manager";
-import AuthController from "./services/auth/controller";
 
 interface AppConfig {
   appSecret: string;
@@ -14,7 +12,6 @@ interface AppConfig {
   port?: number;
   middleware?: Middleware[];
   errorHandlers?: ErrorHandlingMiddleware[];
-  AuthManagerClass: { new (appSecret: string): any };
 }
 
 class App {
@@ -31,7 +28,6 @@ class App {
   constructor({
     appSecret,
     port,
-    AuthManagerClass,
     middleware,
     services,
     errorHandlers,
@@ -40,7 +36,6 @@ class App {
 
     this.app = express();
     this.app.set("APP_SECRET", this.appSecret);
-    this.app.set("authManager", new AuthManagerClass(this.appSecret));
 
     this.port = port || App.DEFAULT_PORT;
 
@@ -114,7 +109,6 @@ export function getDefaultApp(appSecret: string) {
       /* Handle errors */
       errorHandler,
     ],
-    AuthManagerClass: AuthManager,
   });
 }
 

@@ -1,29 +1,12 @@
 import bcrypt from "bcrypt";
 import { getRepository, Repository, DeleteResult } from "typeorm";
-import User from "../../entities/UserModel";
+import User from "../../entities/User";
 import { IManager } from "../common/manager";
 
 interface UserInput extends User {
   password: string;
 }
 
-/**
- * Entity manager for User model
- * This is where you define logic to access data from database
- *
- * A Manager object is to be consumed by:
- * - the Controller
- * - controllers or managers of other services (Auth, Accounts, Transactions, etc)
- *
- * Software Design Tips:
- * - We're using a software design pattern called the façade pattern.
- *   All manipulation of User objects should go through this UserManager.
- *   Such software design provides several benefits:
- *   - it makes testing and future refactoring easier
- *   - it facilitates DRY code
- *   - it provides a simple interface for other controllers or services to consume our main entity (User)
- *   - it abstracts away the complexity of dealing with User model
- */
 class UserManager implements IManager {
   protected userRepository: Repository<User>;
 
@@ -52,7 +35,6 @@ class UserManager implements IManager {
     // 2. Create user
     const newUser = new User();
     newUser.username = userDetails.username;
-    newUser.passwordHash = passwordHash;
 
     return this.userRepository.save(newUser);
   }
@@ -69,8 +51,6 @@ class UserManager implements IManager {
     const updateUser = await this.userRepository.findOne(userId);
     if (updateUser) {
       updateUser.username = updates.username;
-      updateUser.passwordHash = updates.passwordHash;
-      updateUser.displayName = updates.displayName;
       await this.userRepository.save(updateUser);
     }
     return Promise.resolve(updateUser);
@@ -106,11 +86,6 @@ class UserManager implements IManager {
     const user = await this.userRepository.findOne({ username });
     if (!user) {
       throw new Error("username not found");
-    }
-
-    const passwordMatches = await bcrypt.compare(password, user.passwordHash);
-    if (!passwordMatches) {
-      throw new Error("password incorrect");
     }
 
     return user;

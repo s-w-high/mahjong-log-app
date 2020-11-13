@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({ name: "users" })
+@Entity({ name: "user" })
 class User {
   @PrimaryGeneratedColumn("uuid")
   public id: string;
@@ -9,12 +9,6 @@ class User {
     length: 100,
   })
   public username: string;
-
-  @Column()
-  public passwordHash: string;
-
-  @Column({ nullable: true })
-  public displayName: string;
 }
 
 export default User;

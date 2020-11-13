@@ -43,7 +43,7 @@ class UserController extends BaseController {
         return;
       }
 
-      res.json(_.pick(user, ["id", "username", "displayName"]));
+      res.json(_.pick(user, ["id", "username"]));
     } catch (err) {
       // Delegate error handling to Express
       // with our custom error handler in
@@ -64,7 +64,7 @@ class UserController extends BaseController {
       const userDetails = req.body;
       const user = await this.manager.createUser(userDetails);
 
-      res.status(201).json(_.pick(user, ["id", "username", "displayName"]));
+      res.status(201).json(_.pick(user, ["id", "username"]));
     } catch (err) {
       next(err);
     }
@@ -83,7 +83,7 @@ class UserController extends BaseController {
       const newUserDetails = req.body;
       const updatedUser = await this.manager.updateUser(userId, newUserDetails);
 
-      res.json(_.pick(updatedUser, ["id", "username", "displayName"]));
+      res.json(_.pick(updatedUser, ["id", "username"]));
     } catch (err) {
       next(err);
     }
