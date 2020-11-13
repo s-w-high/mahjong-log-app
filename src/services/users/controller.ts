@@ -40,7 +40,7 @@ class UserController extends BaseController {
         return;
       }
 
-      res.json(_.pick(user, ["id", "sei"]));
+      res.json(_.pick(user, ["id", "username"]));
     } catch (err) {
       next(err);
     }
@@ -55,7 +55,7 @@ class UserController extends BaseController {
       const userDetails = req.body;
       const user = await this.manager.createUser(userDetails);
 
-      res.status(201).json(_.pick(user, ["id", "sei"]));
+      res.status(201).json(_.pick(user, ["id", "username"]));
     } catch (err) {
       next(err);
     }
@@ -71,7 +71,7 @@ class UserController extends BaseController {
       const newUserDetails = req.body;
       const updatedUser = await this.manager.updateUser(userId, newUserDetails);
 
-      res.json(_.pick(updatedUser, ["id", "sei"]));
+      res.json(_.pick(updatedUser, ["id", "username"]));
     } catch (err) {
       next(err);
     }
