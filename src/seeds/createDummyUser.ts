@@ -19,16 +19,9 @@
 
 import { Factory, Seeder } from "typeorm-seeding";
 import { Connection } from "typeorm";
-import User from "entities/UserModel";
+import User from "entities/User";
 import userJson from "seeds/users.json";
 
-/**
- * FIXME
- * - Populate the database with users defined in `src/seeds/users.json`
- *
- * Tip!
- * - Consult the documentation listed in **Refs** above
- */
 export default class CreateUsers implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
     await connection

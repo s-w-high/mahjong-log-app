@@ -24,8 +24,8 @@ class UserManager implements IManager {
     const passwordHash = await bcrypt.hash(userDetails.password, saltRound);
 
     const newUser = new User();
-    newUser.sei = userDetails.sei;
-    newUser.mei = userDetails.mei;
+    newUser.username = userDetails.username;
+    newUser.email = userDetails.email;
 
     return this.userRepository.save(newUser);
   }
@@ -36,8 +36,8 @@ class UserManager implements IManager {
   ): Promise<User> {
     const updateUser = await this.userRepository.findOne(userId);
     if (updateUser) {
-      updateUser.sei = updates.sei;
-      updateUser.mei = updates.mei;
+      updateUser.username = updates.username;
+      updateUser.email = updates.email;
       await this.userRepository.save(updateUser);
     }
     return Promise.resolve(updateUser);
@@ -48,10 +48,10 @@ class UserManager implements IManager {
     return Promise.resolve(deleteUser);
   }
 
-  public async verifyAndGetUser(sei: string): Promise<User> {
-    const user = await this.userRepository.findOne({ sei });
+  public async verifyAndGetUser(username: string): Promise<User> {
+    const user = await this.userRepository.findOne({ username });
     if (!user) {
-      throw new Error("sei not found");
+      throw new Error("username not found");
     }
 
     return user;

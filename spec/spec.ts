@@ -37,7 +37,7 @@ describe("The express server", () => {
   beforeEach(async () => {
     let testUser = new User();
     testUser.id = TEST_USER_ID;
-    testUser.sei = "sakai";
+    testUser.username = "sakai";
     testUser = await userRepo.save(testUser);
   });
 

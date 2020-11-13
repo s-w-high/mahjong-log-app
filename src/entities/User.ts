@@ -8,12 +8,7 @@ class User {
   @Column({
     length: 100,
   })
-  public sei: string;
-
-  @Column({
-    length: 100,
-  })
-  public mei: string;
+  public username: string;
 
   @Column({
     length: 100,
