@@ -8,10 +8,18 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "node ./src/index.js",
-    "dev": "nodemon ./src/index.js",
-    "lint": "eslint --fix --ext .js .",
-    "test": "mocha spec && yarn lint"
+    "start": "node ./src/index.ts",
+    "dev": "nodemon ./src/index.ts",
+    "lint": "eslint --fix --ext .ts .",
+    "test": "mocha spec && yarn lint",
+    "testConnection": "ts-node -r dotenv/config src/scripts/testConnection.ts",
+    "build": "tsc -p .",
+    "orm": "ts-node -r dotenv/config ./node_modules/typeorm/cli.js --config src/ormconfig.ts",
+    "makeMigrations": "yarn orm migration:generate",
+    "migrate": "yarn orm migration:run",
+    "rollback": "yarn orm migration:revert",
+    "seeder": "ts-node -r dotenv/config ./node_modules/typeorm-seeding/dist/cli.js",
+    "seed": "yarn seeder --configName src/ormconfig.ts seed"
   },
   "husky": {
     "hooks": {
@@ -19,9 +27,29 @@
     }
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "@types/chai": "^4.2.11",
+    "@types/chai-http": "^4.2.0",
+    "@types/lodash.pick": "^4.4.6",
+    "@types/mocha": "^7.0.2",
+    "@types/pg": "^7.14.3",
+    "@types/uuid": "^7.0.2",
+    "bcrypt": "^4.0.1",
+    "lodash.pick": "^4.4.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.5.0",
+    "typeorm": "^0.2.29",
+    "typeorm-seeding": "^1.6.1",
+    "uuid": "^7.0.2",
+    "webpack": "^5.4.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/express": "^4.17.3",
+    "@types/jsonwebtoken": "^8.3.8",
+    "@types/node": "^13.9.3",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "eslint": "^6.1.0",
@@ -32,6 +60,9 @@
     "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1"
+    "pretty-quick": "^1.11.1",
+    "ts-node": "^8.8.1",
+    "typescript": "^4.0.5",
+    "webpack-cli": "^4.1.0"
   }
 }
