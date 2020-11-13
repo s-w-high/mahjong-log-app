@@ -81,7 +81,6 @@ export function getDefaultApp(appSecret: string) {
     middleware: [
       bodyParser.json(),
       bodyParser.urlencoded({ extended: true }),
-
       loggerMiddleware,
     ],
     errorHandlers: [errorHandler],

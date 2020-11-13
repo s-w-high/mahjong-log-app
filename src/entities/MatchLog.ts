@@ -7,7 +7,7 @@ import {
 } from "typeorm";
 import User from "./User";
 
-@Entity({ name: "match_log" })
+@Entity({ name: "match_logs" })
 class MatchLog {
   @PrimaryGeneratedColumn("uuid")
   public id: string;

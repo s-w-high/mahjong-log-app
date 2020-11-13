@@ -2,10 +2,9 @@ import { Router, Request, Response, NextFunction } from "express";
 import _ from "lodash";
 import UserManager from "./manager";
 import BaseController from "../common/controller";
-import { guarded } from "../../authentication";
 
 class UserController extends BaseController {
-  public path: string = "/users";
+  public path: string = "/api/users";
   public router: Router;
 
   protected manager: UserManager;
@@ -19,10 +18,11 @@ class UserController extends BaseController {
   protected createRouter(): Router {
     const router = Router();
 
-    router.get("/:userId", guarded(this.get));
+    router.get("/:userName", this.get);
+    router.get("/", this.get);
     router.post("/", this.post);
-    router.patch("/:userId", guarded(this.patch));
-    router.delete("/:userId", guarded(this.delete));
+    router.patch("/:userName", this.patch);
+    router.delete("/:userName", this.delete);
 
     return router;
   }
@@ -33,14 +33,19 @@ class UserController extends BaseController {
     next: NextFunction
   ): Promise<void> => {
     try {
-      const { userId } = req.params;
-      const user = await this.manager.getUser(userId);
-      if (!user) {
-        res.status(404).send({ error: "user not found" });
-        return;
-      }
+      if (!req.params.userName) {
+        const user = await this.manager.getAllUser();
+        res.json(user);
+      } else {
+        const { userName } = req.params;
+        const user = await this.manager.getUser(userName);
+        if (!user) {
+          res.status(404).send({ error: "user not found" });
+          return;
+        }
 
-      res.json(_.pick(user, ["id", "username"]));
+        res.json(_.pick(user, ["id", "username", "email"]));
+      }
     } catch (err) {
       next(err);
     }

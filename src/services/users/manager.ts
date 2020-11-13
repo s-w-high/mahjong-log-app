@@ -14,8 +14,14 @@ class UserManager implements IManager {
     this.userRepository = getRepository(User);
   }
 
-  public async getUser(userId: string): Promise<User> {
-    const user = await this.userRepository.findOne(userId);
+  public async getAllUser(): Promise<User[]> {
+    const user = await this.userRepository.find();
+    return Promise.resolve(user);
+  }
+
+  public async getUser(userName: string): Promise<User> {
+    console.log(userName);
+    const user = await this.userRepository.findOne({ username: userName });
     return Promise.resolve(user);
   }
 

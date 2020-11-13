@@ -1,4 +1,4 @@
-# mahjong-log-app
+# 麻雀成績管理アプリ
 
 このアプリは麻雀の成績を管理できるアプリです。
 
@@ -13,26 +13,30 @@
    $ yarn
    ```
 3. DB の設定を行います。
+
    1. DB の ER 図は以下となっております。
-      1. `TODO ER図を貼る`
+
+      ![ER図](./img/er.PNG)
+
    2. 使用する DB を追加します。
-   ```
-   $ psql -U <ユーザ名>
-   パスワード
-   > create database <DB名>
-   ```
-   1. `.env`ファイルに DB の設定を追加します。
-   ```
-   DB_NAME=<DB名>
-   DB_USER=<ユーザー名>
-   DB_PASSWORD=<パスワード>
-   DB_HOST=localhost
-   DB_PORT=5432
-   ```
-   1. 以下のコマンドで DB のマイグレーションを実行します。
-   ```
-   $ yarn migrate
-   ```
+      ```
+      $ psql -U <ユーザ名>
+      パスワード
+      > create database <DB名>
+      ```
+   3. `.env`ファイルに DB の設定を追加します。
+      ```
+      DB_NAME=<DB名>
+      DB_USER=<ユーザー名>
+      DB_PASSWORD=<パスワード>
+      DB_HOST=localhost
+      DB_PORT=5432
+      ```
+   4. 以下のコマンドで DB のマイグレーションを実行します。
+      ```
+      $ yarn migrate
+      ```
+
 4. 以下のコマンドで実行し、[http://localhost:3000](http://localhost:3000)で起動します。
    ```
    $ yarn start or yarn dev

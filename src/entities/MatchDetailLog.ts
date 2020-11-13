@@ -6,7 +6,7 @@ import {
   JoinColumn,
 } from "typeorm";
 
-@Entity({ name: "match__detail_log" })
+@Entity({ name: "match_detail_logs" })
 class MatchLog {
   @PrimaryGeneratedColumn("uuid")
   public id: string;
