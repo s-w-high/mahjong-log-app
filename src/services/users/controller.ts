@@ -27,9 +27,6 @@ class UserController extends BaseController {
     return router;
   }
 
-  /**
-   * HTTP GET request handler
-   */
   protected get = async (
     req: Request,
     res: Response,
@@ -43,18 +40,12 @@ class UserController extends BaseController {
         return;
       }
 
-      res.json(_.pick(user, ["id", "username"]));
+      res.json(_.pick(user, ["id", "sei"]));
     } catch (err) {
-      // Delegate error handling to Express
-      // with our custom error handler in
-      // `src/middleware/errorHandler.ts`
       next(err);
     }
   };
 
-  /**
-   * HTTP POST request handler
-   */
   protected post = async (
     req: Request,
     res: Response,
@@ -64,15 +55,12 @@ class UserController extends BaseController {
       const userDetails = req.body;
       const user = await this.manager.createUser(userDetails);
 
-      res.status(201).json(_.pick(user, ["id", "username"]));
+      res.status(201).json(_.pick(user, ["id", "sei"]));
     } catch (err) {
       next(err);
     }
   };
 
-  /**
-   * HTTP PATCH request handler
-   */
   protected patch = async (
     req: Request,
     res: Response,
@@ -83,15 +71,12 @@ class UserController extends BaseController {
       const newUserDetails = req.body;
       const updatedUser = await this.manager.updateUser(userId, newUserDetails);
 
-      res.json(_.pick(updatedUser, ["id", "username"]));
+      res.json(_.pick(updatedUser, ["id", "sei"]));
     } catch (err) {
       next(err);
     }
   };
 
-  /**
-   * HTTP DELETE request handler
-   */
   protected delete = async (
     req: Request,
     res: Response,

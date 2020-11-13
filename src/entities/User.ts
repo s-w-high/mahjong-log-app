@@ -8,7 +8,22 @@ class User {
   @Column({
     length: 100,
   })
-  public username: string;
+  public sei: string;
+
+  @Column({
+    length: 100,
+  })
+  public mei: string;
+
+  @Column({
+    length: 100,
+  })
+  public email: string;
+
+  @Column({
+    length: 100,
+  })
+  public passwordhash: string;
 }
 
 export default User;

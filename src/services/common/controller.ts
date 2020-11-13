@@ -7,10 +7,8 @@ abstract class BaseController {
 
   protected manager: IManager;
 
-  /* Required methods */
   protected abstract createRouter(): Router;
 
-  /* Optional abstract methods */
   protected get(
     req: Request,
     res: Response,
