@@ -43,8 +43,11 @@ class App {
     this.app.use("/register", (req, res) => {
       res.sendFile(path.join(__dirname, "/public/register.html"));
     });
-    this.app.use("/match", (req, res) => {
-      res.sendFile(path.join(__dirname, "/public/match.html"));
+    this.app.use("/match-four", (req, res) => {
+      res.sendFile(path.join(__dirname, "/public/match-four.html"));
+    });
+    this.app.use("/match-three", (req, res) => {
+      res.sendFile(path.join(__dirname, "/public/match-three.html"));
     });
 
     this.app.set("APP_SECRET", this.appSecret);

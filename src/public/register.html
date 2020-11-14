@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>ユーザー登録</title>
     <link rel="stylesheet" href="./css/register.css" />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/common.css" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -21,10 +21,12 @@
     <div class="topnav">
       <a href="/">トップページ</a>
       <a class="active" href="#register">ユーザ登録</a>
-      <a href="/match">成績管理</a>
+      <a href="/match-four">成績管理（4麻）</a>
+      <a href="/match-three">成績管理（3麻）</a>
     </div>
 
     <h1>ユーザー登録フォーム</h1>
+    <hr />
     <div>
       <form
         action="http://localhost:3000/api/users"
@@ -33,8 +35,9 @@
         onsubmit="doSomething();return false;"
       >
         <div class="form-group">
-          <label>名前</label>
+          <label style="font-size: x-large;">名前</label>
           <input
+            style="width: 30%"
             id="userName"
             type="text"
             name="username"
@@ -43,8 +46,9 @@
           />
         </div>
         <div class="form-group">
-          <label>Email address</label>
+          <label style="font-size: x-large;">Email address</label>
           <input
+            style="width: 30%"
             id="email"
             type="email"
             name="email"
@@ -53,8 +57,9 @@
           />
         </div>
         <div class="form-group">
-          <label>Password</label>
+          <label style="font-size: x-large;"> Password</label>
           <input
+            style="width: 30%"
             id="password"
             type="password"
             name="password"
@@ -62,7 +67,9 @@
             placeholder="Password"
           />
         </div>
-        <button type="submit" class="btn btn-info">Submit</button>
+        <div class="form-group">
+          <button type="submit" class="btn btn-info">Submit</button>
+        </div>
       </form>
     </div>
     <script src="./js/register.js"></script>

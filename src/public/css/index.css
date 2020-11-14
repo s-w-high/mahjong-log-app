@@ -1,35 +1,53 @@
-/* Add a black background color to the top navigation */
-.topnav {
-  background-color: rgb(51, 51, 51);
-  overflow: hidden;
+.register {
+  text-align: right;
+  margin-right: 100px;
 }
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
+.match-four-button {
+  margin: 10px;
+  display: inline-block;
+  position: relative;
   text-decoration: none;
-  font-size: 17px;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #4caf50;
   color: white;
+  width: 25%;
+  height: 10%;
+  line-height: 80px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: xx-large;
+  overflow: hidden;
+  background: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
 }
 
-/* body {
-  background-color: #486d46;           
-  background-image: url("../img/black.jpg");
-  background-size: cover;              
-  background-attachment: fixed;        
-  background-position: center center;   
-} */
+.match-three-button {
+  margin: 10px;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: white;
+  width: 25%;
+  height: 10%;
+  line-height: 80px;
+  border-radius: 5px;
+  font-size: xx-large;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+}
+
+.match-four-button:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(#fed6e3 0%, #ffbcbc 100%);
+}
+
+.match-three-button:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(#fed6e3 0%, #ffbcbc 100%);
+}
