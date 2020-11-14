@@ -48,15 +48,14 @@
 |エンドポイント|HTTP メソッド|説明|
 |-|-|-|
 |`/api/users`|GET| ユーザーの一覧を返します。<br> クエリパラメータで`limit=n`を指定すると`n`件のみ取得できます。|
-|`/api/users/:id`|GET| 指定した ID のユーザー情報を返します。|
+|`/api/users/:userId`|GET| 指定した ID のユーザー情報を返します。|
 |`/api/users`|POST|ユーザーを追加します。|
-|`/api/users/:id`|PATCH|指定した ID のユーザーの情報を変更します。|
+|`/api/users/:userId`|PATCH|指定した ID のユーザーの情報を変更します。|
 |`/api/users`|DELETE |全ユーザーを削除します。|
-|`/api/users/:id`|DELETE |指定した ID のユーザーを削除します。|
+|`/api/users/:userId`|DELETE |指定した ID のユーザーを削除します。|
 |`/api/match-logs`|GET| 全ユーザーの戦績一覧を返します。<br> クエリパラメータで`limit=n`を指定すると`n`件のみ取得できます。|
-|`/api/users/:id/match-logs`|GET|指定した ID のユーザーの戦績一覧を返します。<br> クエリパラメータで`limit=n`を指定すると`n`件のみ取得できます。|
-|`/api/users/:id/match-logs/:id`|GET| 指定した ID ユーザーで、指定した ID のの戦績を返します。|
-|`/api/users/:id/match-logs`|POST| 指定した ID のユーザーの戦績を追加します。|
-|`/api/users/:id/match-logs/:id`|PATCH| 指定した ID ユーザーで、指定した ID のの戦績を変更します。|
-|`/api/users/:id/match-logs`|DELETE| 指定した ID ユーザーの戦績データをすべて削除します。|
-|`/api/users/:id/match-logs/:id`|DELETE| 指定した ID ユーザーで、指定した ID のの戦績を削除します。|
+|`/api/users/:userId/match-logs`|GET|指定した ID のユーザーの戦績一覧を返します。<br> クエリパラメータで`limit=n`を指定すると`n`件のみ取得できます。|
+|`/api/users/:userId/match-logs/:matchId`|GET| 指定した ID ユーザーで、指定した ID のの戦績を返します。|
+|`/api/match-logs`|POST| 指定した ID のユーザーの戦績を追加します。|
+|`/api/match-logs/:id`|PATCH| 指定した ID ユーザーで、指定した ID のの戦績を変更します。|
+|`/api/match-logs/:matchId`|DELETE| 指定した ID ユーザーで、指定した ID のの戦績を削除します。|

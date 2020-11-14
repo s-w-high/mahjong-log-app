@@ -19,10 +19,10 @@ class MatchDetailLogManager implements IManager {
     return Promise.resolve(matchDetailLog);
   }
 
-  //public async getUser(userName: string): Promise<MatchDetailLog> {
+  // public async getByUserId(userId: string): Promise<MatchDetailLog> {
   // const user = await this.userRepository.findOne({ username: userName });
   // return Promise.resolve(user);
-  //}
+  // }
 
   //public async createUser(userDetails: Partial<MatchDetailLogInput>): Promise<MatchDetailLog> {
   // const saltRound = 10;

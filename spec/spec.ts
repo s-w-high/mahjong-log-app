@@ -188,5 +188,30 @@ describe("The express server", () => {
         expect(res).to.have.status(200);
       });
     });
+
+    // describe.only("match-detail-logs test", () => {
+    //   it("GET /api/match-detail-logs all logs", async () => {
+    //     const res = await request.get("/api/match-detail-logs");
+    //     expect(res).to.have.status(200);
+    //     expect(JSON.parse(res.text)).to.deep.equal(testMatchDetailLogData);
+    //   });
+
+    //   it("GET /api/users/:userId/match-detail-logs", async () => {
+    //     const res = await request.get("/api/users/1/match-logs");
+    //     let expected = [];
+    //     expected.push(testMatchDetailLogData[1]);
+    //     expected.push(testMatchDetailLogData[2]);
+    //     expect(res).to.have.status(200);
+    //     expect(JSON.parse(res.text)).to.deep.equal(expected);
+    //   });
+
+    //   it("GET /api/match/:matchId/match-detail-logs", async () => {
+    //     const res = await request.get("/api/users/1/match-logs");
+    //     let expected = [];
+    //     expected.push(testMatchDetailLogData[0]);
+    //     expect(res).to.have.status(200);
+    //     expect(JSON.parse(res.text)).to.deep.equal(expected);
+    //   });
+    // });
   });
 });

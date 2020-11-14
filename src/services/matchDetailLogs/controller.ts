@@ -4,7 +4,7 @@ import MatchDetailLogManager from "./manager";
 import BaseController from "../common/controller";
 
 class MatchDetailLogsController extends BaseController {
-  public path: string = "/api/users";
+  public path: string = "/api";
   public router: Router;
 
   protected manager: MatchDetailLogManager;
@@ -18,12 +18,13 @@ class MatchDetailLogsController extends BaseController {
   protected createRouter(): Router {
     const router = Router();
 
-    router.get("/:userName", this.get);
-    router.get("/", this.get);
-    router.post("/", this.post);
-    router.patch("/:userName", this.patch);
-    router.delete("/", this.delete);
-    router.delete("/:userName", this.delete);
+    router.get("/match-detail-logs", this.get);
+    router.get("/users/:userId/match-detail-logs", this.get);
+    router.get("/match/:matchId/match-detail-logs", this.get);
+    // router.post("/", this.post);
+    // router.patch("/:userName", this.patch);
+    // router.delete("/", this.delete);
+    // router.delete("/:userName", this.delete);
 
     return router;
   }
@@ -34,23 +35,25 @@ class MatchDetailLogsController extends BaseController {
   //   next: NextFunction
   // ): Promise<void> => {
   //   try {
-  //     if (!req.params.userName) {
-  //       const user = await this.manager.getAllUser();
-  //       let resultUser = [];
-  //       _.pick(
-  //         user.forEach((user) => {
-  //           resultUser.push(_.pick(user, ["id", "username", "email"]));
-  //         })
-  //       );
-  //       res.json(resultUser);
-  //     } else {
-  //       const { userName } = req.params;
-  //       const user = await this.manager.getUser(userName);
-  //       if (!user) {
-  //         res.status(404).send({ error: "user not found" });
+  //     if (!req.params.userId && !req.params.matchId) {
+  //       const matchDetailLog = await this.manager.getAllMatchDetailLog();
+  //       res.json(matchDetailLog);
+  //     } else if (req.params.userId) {
+  //       const userId = req.params.userId;
+  //       const matchDetailLog = await this.manager.getByUserId(userId);
+  //       if (!matchDetailLog) {
+  //         res.status(404).send({ error: "matchDetailLog not found" });
   //         return;
   //       }
-  //       res.json(_.pick(user, ["id", "username", "email"]));
+  //       res.json(matchDetailLog);
+  //     } else if (req.params.matchId) {
+  //       const matchId = req.params.matchId;
+  //       const matchDetailLog = await this.manager.getByMatchId(matchId);
+  //       if (!matchDetailLog) {
+  //         res.status(404).send({ error: "matchDetailLog not found" });
+  //         return;
+  //       }
+  //       res.json(matchDetailLog);
   //     }
   //   } catch (err) {
   //     next(err);
