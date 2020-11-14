@@ -3,10 +3,6 @@ import { getRepository, Repository, DeleteResult } from "typeorm";
 import MatchLog from "../../entities/MatchLog";
 import { IManager } from "../common/manager";
 
-interface MatchLogInput extends MatchLog {
-  password: string;
-}
-
 class MatchLogManager implements IManager {
   protected matchLogRepository: Repository<MatchLog>;
 
@@ -14,27 +10,44 @@ class MatchLogManager implements IManager {
     this.matchLogRepository = getRepository(MatchLog);
   }
 
-  // public async getAllMatchLog(): Promise<MatchLog[]> {
-  //   const user = await this.matchLogRepository.find();
-  //   return Promise.resolve(user);
-  // }
+  public async getAllMatchLog(): Promise<MatchLog[]> {
+    const matchLogs = await this.matchLogRepository.find();
+    return Promise.resolve(matchLogs);
+  }
 
-  // public async getUser(userName: string): Promise<User> {
-  //   const user = await this.userRepository.findOne({ username: userName });
-  //   return Promise.resolve(user);
-  // }
+  public async getMatchLogByUser(userId: string): Promise<MatchLog[]> {
+    const matchLogs = await this.matchLogRepository.find({
+      where: [
+        { eastuser: userId },
+        { westuser: userId },
+        { southuser: userId },
+        { northuser: userId },
+      ],
+    });
+    return Promise.resolve(matchLogs);
+  }
 
-  // public async createUser(userDetails: Partial<UserInput>): Promise<User> {
-  //   const saltRound = 10;
-  //   const passwordHash = await bcrypt.hash(userDetails.password, saltRound);
+  public async getMatchLogByUserAndMatch(
+    userId: string,
+    matchId: string
+  ): Promise<MatchLog[]> {
+    const matchLogs = await this.matchLogRepository.find({
+      where: [
+        { id: matchId, eastuser: userId },
+        { id: matchId, westuser: userId },
+        { id: matchId, southuser: userId },
+        { id: matchId, northuser: userId },
+      ],
+    });
+    return Promise.resolve(matchLogs);
+  }
 
-  //   const newUser = new User();
-  //   newUser.username = userDetails.username;
-  //   newUser.email = userDetails.email;
-  //   newUser.passwordhash = passwordHash;
+  public async createMatchLog(matchLogDetails: MatchLog): Promise<MatchLog> {
+    const newMatchLog = new MatchLog();
+    Object.assign(newMatchLog, matchLogDetails);
 
-  //   return this.userRepository.save(newUser);
-  // }
+    return this.matchLogRepository.save(newMatchLog);
+  }
 
   // public async updateUser(
   //   userName: string,

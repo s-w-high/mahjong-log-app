@@ -1,15 +1,15 @@
 import { Factory, Seeder } from "typeorm-seeding";
 import { Connection } from "typeorm";
-import User from "../entities/User";
-import userJson from "./users.json";
+import MatchLog from "../entities/MatchLog";
+import matchLogJson from "./matchLogs.json";
 
-export default class CreateUsers implements Seeder {
+export default class CreateMatchLogs implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
     await connection
       .createQueryBuilder()
       .insert()
-      .into(User)
-      .values(userJson)
+      .into(MatchLog)
+      .values(matchLogJson)
       .execute();
   }
 }

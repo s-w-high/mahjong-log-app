@@ -5,10 +5,11 @@ import {
   ManyToOne,
   JoinColumn,
 } from "typeorm";
+import MatchLog from "./MatchLog";
 
-@Entity({ name: "match_detail_logs" })
-class MatchLog {
-  @PrimaryGeneratedColumn("uuid")
+@Entity({ name: "t_match_detail_logs" })
+class MatchDetailLog {
+  @PrimaryGeneratedColumn()
   public id: string;
 
   @ManyToOne((type) => MatchLog, { onDelete: "CASCADE" })
@@ -31,4 +32,4 @@ class MatchLog {
   public northpoint: Number;
 }
 
-export default MatchLog;
+export default MatchDetailLog;

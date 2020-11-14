@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({ name: "users" })
+@Entity({ name: "m_users" })
 class User {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn()
   public id: string;
 
   @Column({

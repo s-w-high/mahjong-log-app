@@ -1,0 +1,40 @@
+[
+  {
+    "eastuser": {
+      "id": "1"
+    },
+    "southuser": {
+      "id": "2"
+    },
+    "westuser": {
+      "id": "3"
+    },
+    "northuser": {
+      "id": "4"
+    },
+    "eastuserpoint": 50,
+    "southuserpoint": 10,
+    "westuserpoint": -20,
+    "northuserpoint": -40,
+    "created": "2020-11-14"
+  },
+  {
+    "eastuser": {
+      "id": "2"
+    },
+    "southuser": {
+      "id": "3"
+    },
+    "westuser": {
+      "id": "4"
+    },
+    "northuser": {
+      "id": "5"
+    },
+    "eastuserpoint": 45,
+    "southuserpoint": 6,
+    "westuserpoint": -18,
+    "northuserpoint": -31,
+    "created": "2020-11-15"
+  }
+]

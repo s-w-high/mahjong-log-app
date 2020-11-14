@@ -7,9 +7,9 @@ import {
 } from "typeorm";
 import User from "./User";
 
-@Entity({ name: "match_logs" })
+@Entity({ name: "t_match_logs" })
 class MatchLog {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn()
   public id: string;
 
   @ManyToOne((type) => User, { onDelete: "CASCADE" })

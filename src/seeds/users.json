@@ -2,25 +2,31 @@
   {
     "username": "sakai",
     "email": "sakai@nri.co.jp",
-    "id": "b12f9390-aeb0-11ea-b3de-0242ac130005",
     "passwordhash": "$2b$10$OaDbdckbS24vzhar1VX5PuT3Cqx24nypbIrdZxI2LzsmIlXahZP52"
   },
   {
     "username": "mori",
     "email": "mori@nri.co.jp",
-    "id": "b12f9390-aeb0-11ea-b3de-0242ac130003",
     "passwordhash": "$2b$10$OaDbdckbS24vzhar1VX5PuT3Cqx24nypbIrdZxI2LzsmIlXahZP52"
   },
   {
     "username": "iwashita",
     "email": "iwashita@nri.co.jp",
-    "id": "b12f9390-aeb0-11ea-b3de-0242ac130006",
     "passwordhash": "$2b$10$OaDbdckbS24vzhar1VX5PuT3Cqx24nypbIrdZxI2LzsmIlXahZP52"
   },
   {
     "username": "kagimoto",
     "email": "kagimoto@nri.co.jp",
-    "id": "b12f9390-aeb0-11ea-b3de-0242ac130007",
+    "passwordhash": "$2b$10$OaDbdckbS24vzhar1VX5PuT3Cqx24nypbIrdZxI2LzsmIlXahZP52"
+  },
+  {
+    "username": "sasaki",
+    "email": "sasaki@nri.co.jp",
+    "passwordhash": "$2b$10$OaDbdckbS24vzhar1VX5PuT3Cqx24nypbIrdZxI2LzsmIlXahZP52"
+  },
+  {
+    "username": "dummy",
+    "email": "dummy@nri.co.jp",
     "passwordhash": "$2b$10$OaDbdckbS24vzhar1VX5PuT3Cqx24nypbIrdZxI2LzsmIlXahZP52"
   }
 ]

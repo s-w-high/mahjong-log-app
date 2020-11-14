@@ -7,7 +7,7 @@ export = {
   database: process.env.DB_NAME || "mahjong_log",
   entities: ["src/entities/**/*.ts"],
   migrations: ["src/migrations/**/*.ts"],
-  seeds: ["src/seeds/**/*.ts"],
+  seeds: ["src/seeds/CreateDummyUser.ts", "src/seeds/CreateDummyMatchLog.ts"],
   logging: false,
   migrationsRun: false /* Disable auto-run migration */,
   cli: {

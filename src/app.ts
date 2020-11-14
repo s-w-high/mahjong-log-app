@@ -5,6 +5,8 @@ import bodyParser from "body-parser";
 import loggerMiddleware from "./middleware/logger";
 import UserController from "./services/users/controller";
 import errorHandler from "./middleware/errorHandler";
+import MatchLogController from "./services/matchLogs/controller";
+import MatchDetailLogsController from "./services/matchDetailLogs/controller";
 
 const path = require("path");
 
@@ -77,7 +79,11 @@ export function getDefaultApp(appSecret: string) {
   return new App({
     appSecret,
     port: 3000,
-    services: [new UserController()],
+    services: [
+      new UserController(),
+      new MatchLogController(),
+      new MatchDetailLogsController(),
+    ],
     middleware: [
       bodyParser.json(),
       bodyParser.urlencoded({ extended: true }),

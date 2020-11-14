@@ -18,12 +18,12 @@ class UserController extends BaseController {
   protected createRouter(): Router {
     const router = Router();
 
-    router.get("/:userName", this.get);
+    router.get("/:id", this.get);
     router.get("/", this.get);
     router.post("/", this.post);
-    router.patch("/:userName", this.patch);
+    router.patch("/:id", this.patch);
     router.delete("/", this.delete);
-    router.delete("/:userName", this.delete);
+    router.delete("/:id", this.delete);
 
     return router;
   }
@@ -34,7 +34,7 @@ class UserController extends BaseController {
     next: NextFunction
   ): Promise<void> => {
     try {
-      if (!req.params.userName) {
+      if (!req.params.id) {
         const user = await this.manager.getAllUser();
         let resultUser = [];
         _.pick(
@@ -44,8 +44,8 @@ class UserController extends BaseController {
         );
         res.json(resultUser);
       } else {
-        const { userName } = req.params;
-        const user = await this.manager.getUser(userName);
+        const userId = req.params.id;
+        const user = await this.manager.getUser(userId);
         if (!user) {
           res.status(404).send({ error: "user not found" });
           return;
@@ -78,13 +78,10 @@ class UserController extends BaseController {
     next: NextFunction
   ): Promise<void> => {
     try {
-      const { userName } = req.params;
+      const userId = req.params.id;
       const newUserDetails = req.body;
 
-      const updatedUser = await this.manager.updateUser(
-        userName,
-        newUserDetails
-      );
+      const updatedUser = await this.manager.updateUser(userId, newUserDetails);
 
       res.json(_.pick(updatedUser, ["id", "username"]));
     } catch (err) {

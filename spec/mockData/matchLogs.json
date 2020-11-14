@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "eastuserpoint": 50,
+    "southuserpoint": 10,
+    "westuserpoint": -20,
+    "northuserpoint": -40,
+    "created": "2020-11-14T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "eastuserpoint": 45,
+    "southuserpoint": 6,
+    "westuserpoint": -18,
+    "northuserpoint": -31,
+    "created": "2020-11-15T00:00:00.000Z"
+  }
+]

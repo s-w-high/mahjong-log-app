@@ -4,7 +4,7 @@ import MatchLogManager from "./manager";
 import BaseController from "../common/controller";
 
 class MatchLogController extends BaseController {
-  public path: string = "/api/match-logs";
+  public path: string = "/api";
   public router: Router;
 
   protected manager: MatchLogManager;
@@ -18,59 +18,71 @@ class MatchLogController extends BaseController {
   protected createRouter(): Router {
     const router = Router();
 
-    router.get("/:userName", this.get);
-    router.get("/", this.get);
-    router.post("/", this.post);
-    router.patch("/:userName", this.patch);
-    router.delete("/", this.delete);
-    router.delete("/:userName", this.delete);
+    router.get("/match-logs", this.get);
+    router.get("/users/:userId/match-logs", this.get);
+    router.get("/users/:userId/match-logs/:matchId", this.get);
+    router.post("/users/:userId/match-logs", this.post);
+    router.patch("/users/:userId/match-logs/:matchId", this.patch);
+    router.delete("/users/:userId/match-logs/", this.delete);
+    router.delete("/users/:userId/match-logs/:matchId", this.delete);
 
     return router;
   }
 
-  // protected get = async (
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction
-  // ): Promise<void> => {
-  //   try {
-  //     if (!req.params.userName) {
-  //       const user = await this.manager.getAllUser();
-  //       let resultUser = [];
-  //       _.pick(
-  //         user.forEach((user) => {
-  //           resultUser.push(_.pick(user, ["id", "username", "email"]));
-  //         })
-  //       );
-  //       res.json(resultUser);
-  //     } else {
-  //       const { userName } = req.params;
-  //       const user = await this.manager.getUser(userName);
-  //       if (!user) {
-  //         res.status(404).send({ error: "user not found" });
-  //         return;
-  //       }
-  //       res.json(_.pick(user, ["id", "username", "email"]));
-  //     }
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // };
+  protected get = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    try {
+      if (!req.params.userId && !req.params.matchId) {
+        const matchLogs = await this.manager.getAllMatchLog();
+        if (!matchLogs) {
+          res.status(404).send({ error: "matchLogs not found" });
+          return;
+        }
+        res.json(matchLogs);
+      } else if (req.params.userId && !req.params.matchId) {
+        const userId = req.params.userId;
+        const matchLogs = await this.manager.getMatchLogByUser(userId);
+        if (!matchLogs) {
+          res.status(404).send({ error: "matchLogs not found" });
+          return;
+        }
+        res.json(matchLogs);
+      } else {
+        const userId = req.params.userId;
+        const matchId = req.params.matchId;
+        const matchLogs = await this.manager.getMatchLogByUserAndMatch(
+          userId,
+          matchId
+        );
+        if (!matchLogs) {
+          res.status(404).send({ error: "matchLogs not found" });
+          return;
+        }
+        res.json(matchLogs);
+      }
+    } catch (err) {
+      next(err);
+    }
+  };
 
-  // protected post = async (
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction
-  // ): Promise<void> => {
-  //   try {
-  //     const userDetails = req.body;
-  //     const user = await this.manager.createUser(userDetails);
+  protected post = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    try {
+      const details = req.body;
+      const match = await this.manager.createMatchLog(details);
 
-  //     res.status(201).json(_.pick(user, ["id", "username"]));
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // };
+      res.statusCode = 201;
+      res.end();
+    } catch (err) {
+      next(err);
+    }
+  };
 
   // protected patch = async (
   //   req: Request,
@@ -78,15 +90,18 @@ class MatchLogController extends BaseController {
   //   next: NextFunction
   // ): Promise<void> => {
   //   try {
-  //     const { userName } = req.params;
-  //     const newUserDetails = req.body;
+  //     const userName = req.params.userName;
+  //     const matchId = req.params.id;
+  //     const newMatchLogDetails = req.body;
 
-  //     const updatedUser = await this.manager.updateUser(
+  //     const updatedUser = await this.manager.updateMatchLog(
   //       userName,
-  //       newUserDetails
+  //       matchId,
+  //       newMatchLogDetails
   //     );
 
-  //     res.json(_.pick(updatedUser, ["id", "username"]));
+  //     res.statusCode = 200;
+  //     res.end();
   //   } catch (err) {
   //     next(err);
   //   }
@@ -97,13 +112,23 @@ class MatchLogController extends BaseController {
   //   res: Response,
   //   next: NextFunction
   // ): Promise<void> => {
-  //   const { userName } = req.params;
-
-  //   try {
-  //     await this.manager.removeUser(userName);
-  //     res.status(200).end();
-  //   } catch (err) {
-  //     next(err);
+  //   if(!req.params.id){
+  //     const userName = req.params.userName;
+  //     try {
+  //       await this.manager.removeMatchLog(userName);
+  //       res.status(200).end();
+  //     } catch (err) {
+  //       next(err);
+  //     }
+  //   } else {
+  //     const userName = req.params.userName;
+  //     const matchId = req.params.id;
+  //     try {
+  //       await this.manager.removeMatchLogByMatch(userName, matchId);
+  //       res.status(200).end();
+  //     } catch (err) {
+  //       next(err);
+  //     }
   //   }
   // };
 }

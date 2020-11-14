@@ -19,8 +19,8 @@ class UserManager implements IManager {
     return Promise.resolve(user);
   }
 
-  public async getUser(userName: string): Promise<User> {
-    const user = await this.userRepository.findOne({ username: userName });
+  public async getUser(userId: string): Promise<User> {
+    const user = await this.userRepository.findOne({ id: userId });
     return Promise.resolve(user);
   }
 
@@ -37,11 +37,11 @@ class UserManager implements IManager {
   }
 
   public async updateUser(
-    userName: string,
+    userId: string,
     updates: Partial<User>
   ): Promise<User> {
     const updateUser = await this.userRepository.findOne({
-      username: userName,
+      id: userId,
     });
     if (updateUser) {
       Object.assign(updateUser, updates);
@@ -50,13 +50,13 @@ class UserManager implements IManager {
     return Promise.resolve(updateUser);
   }
 
-  public async removeUser(userName: string): Promise<DeleteResult | void> {
-    const deleteUser = await this.userRepository.delete({ username: userName });
+  public async removeUser(userId: string): Promise<DeleteResult | void> {
+    const deleteUser = await this.userRepository.delete({ id: userId });
     return Promise.resolve(deleteUser);
   }
 
-  public async verifyAndGetUser(userName: string): Promise<User> {
-    const user = await this.userRepository.findOne({ username: userName });
+  public async verifyAndGetUser(userId: string): Promise<User> {
+    const user = await this.userRepository.findOne({ id: userId });
     if (!user) {
       throw new Error("username not found");
     }

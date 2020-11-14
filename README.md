@@ -58,5 +58,5 @@
 |`/api/users/:id/match-logs/:id`|GET| 指定した ID ユーザーで、指定した ID のの戦績を返します。|
 |`/api/users/:id/match-logs`|POST| 指定した ID のユーザーの戦績を追加します。|
 |`/api/users/:id/match-logs/:id`|PATCH| 指定した ID ユーザーで、指定した ID のの戦績を変更します。|
-|`/api/users/:id/match-logs/:id`|DELETE| 指定した ID ユーザーの戦績データをすべて削除します。|
+|`/api/users/:id/match-logs`|DELETE| 指定した ID ユーザーの戦績データをすべて削除します。|
 |`/api/users/:id/match-logs/:id`|DELETE| 指定した ID ユーザーで、指定した ID のの戦績を削除します。|
