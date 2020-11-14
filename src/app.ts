@@ -37,7 +37,16 @@ class App {
     this.appSecret = appSecret;
 
     this.app = express();
+
+    //ページへのルーティング
     this.app.use(express.static(path.join(__dirname, "public")));
+    this.app.use("/register", (req, res) => {
+      res.sendFile(path.join(__dirname, "/public/register.html"));
+    });
+    this.app.use("/match", (req, res) => {
+      res.sendFile(path.join(__dirname, "/public/match.html"));
+    });
+
     this.app.set("APP_SECRET", this.appSecret);
 
     this.port = port || App.DEFAULT_PORT;

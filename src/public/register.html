@@ -1,0 +1,70 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ユーザー登録</title>
+    <link rel="stylesheet" href="./css/register.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="topnav">
+      <a href="/">トップページ</a>
+      <a class="active" href="#register">ユーザ登録</a>
+      <a href="/match">成績管理</a>
+    </div>
+
+    <h1>ユーザー登録フォーム</h1>
+    <div>
+      <form
+        action="http://localhost:3000/api/users"
+        accept-charset="UTF-8"
+        method="post"
+        onsubmit="doSomething();return false;"
+      >
+        <div class="form-group">
+          <label>名前</label>
+          <input
+            id="userName"
+            type="text"
+            name="username"
+            class="form-control"
+            placeholder="名前"
+          />
+        </div>
+        <div class="form-group">
+          <label>Email address</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email"
+          />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Password"
+          />
+        </div>
+        <button type="submit" class="btn btn-info">Submit</button>
+      </form>
+    </div>
+    <script src="./js/register.js"></script>
+  </body>
+</html>
