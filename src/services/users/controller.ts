@@ -95,7 +95,7 @@ class UserController extends BaseController {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    const userId = req.params.userid;
+    const userId = req.params.userId;
 
     try {
       await this.manager.removeUser(userId);

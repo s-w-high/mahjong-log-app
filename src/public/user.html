@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>ユーザー登録</title>
-    <link rel="stylesheet" href="./css/register.css" />
+    <link rel="stylesheet" href="./css/user.css" />
     <link rel="stylesheet" href="./css/common.css" />
     <link
       rel="stylesheet"
@@ -20,7 +20,7 @@
   <body>
     <div class="topnav">
       <a href="/">トップページ</a>
-      <a class="active" href="#register">ユーザ登録</a>
+      <a class="active" href="/user">ユーザ登録</a>
       <a href="/match-four">成績管理（4麻）</a>
       <a href="/match-three">成績管理（3麻）</a>
     </div>
@@ -29,7 +29,6 @@
     <hr />
     <div>
       <form
-        action="http://localhost:3000/api/users"
         accept-charset="UTF-8"
         method="post"
         onsubmit="doSomething();return false;"
@@ -72,6 +71,67 @@
         </div>
       </form>
     </div>
-    <script src="./js/register.js"></script>
+    <hr />
+    <h1>ユーザ情報</h1>
+    <div class="user" style="width: 30%">
+      <h5>ユーザー検索</h5>
+      <input
+        style="width: 100px;margin-left: 10px;"
+        id="userId"
+        type="text"
+        name="userId"
+        class="form-control"
+        placeholder="id"
+      />
+      <br />
+      <button id="search" style="margin-left: 10px;" class="btn btn-primary">
+        検索
+      </button>
+    </div>
+    <div class="user" style="width: 30%">
+      <h5>ユーザー情報変更</h5>
+      <input
+        style="width: 100px;margin-left: 10px;"
+        id="patchUserId"
+        type="text"
+        class="form-control"
+        placeholder="id"
+      />
+      <br />
+      <button id="edit" style="margin-left: 10px;" class="btn btn-success">
+        更新
+      </button>
+    </div>
+    <div class="user" style="width: 30%">
+      <h5>ユーザー削除</h5>
+      <input
+        style="width: 100px;margin-left: 10px;"
+        id="deleteUserId"
+        type="text"
+        class="form-control"
+        placeholder="id"
+      />
+      <br />
+      <button id="delete" style="margin-left: 10px;" class="btn btn-danger">
+        削除
+      </button>
+    </div>
+
+    <div class="userall">
+      <!-- <h4>ユーザー一覧</h4> -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">username</th>
+            <th scope="col">email</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script src="./js/user.js"></script>
   </body>
 </html>

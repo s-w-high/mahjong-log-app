@@ -25,3 +25,10 @@
 .form-group {
   margin-left: 10px;
 }
+
+.user {
+  float: left;
+}
+.userall {
+  float: none;
+}

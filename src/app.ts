@@ -40,8 +40,8 @@ class App {
 
     //ページへのルーティング
     this.app.use(express.static(path.join(__dirname, "public")));
-    this.app.use("/register", (req, res) => {
-      res.sendFile(path.join(__dirname, "/public/register.html"));
+    this.app.use("/user", (req, res) => {
+      res.sendFile(path.join(__dirname, "/public/user.html"));
     });
     this.app.use("/match-four", (req, res) => {
       res.sendFile(path.join(__dirname, "/public/match-four.html"));
