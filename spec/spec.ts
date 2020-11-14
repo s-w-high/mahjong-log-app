@@ -91,16 +91,16 @@ describe("The express server", () => {
         });
       });
 
-      it.skip("DELETE /api/users", async () => {
-        const res = await request.delete("/api/users/1");
-
-        expect(res).to.have.status(200);
+      it("DELETE /api/users", async () => {
         await tearDownRequest.post("/api/users").send({
-          id: 1,
-          username: "sakai",
-          email: "sakai@nri.co.jp",
+          username: "test",
+          email: "test@nri.co.jp",
           password: "xxxxxx",
         });
+
+        const res = await request.delete("/api/users/8");
+
+        expect(res).to.have.status(200);
       });
     });
 
@@ -141,6 +141,51 @@ describe("The express server", () => {
         });
 
         expect(res).to.have.status(201);
+        await tearDownRequest.patch("/api/match-logs/3");
+      });
+
+      it("PATCH /api/users/:userId/match-logs/:matchId", async () => {
+        const res = await request.patch("/api/match-logs/1").send({
+          eastuserpoint: 60,
+          southuserpoint: 5,
+          westuserpoint: -15,
+          northuserpoint: -50,
+        });
+
+        expect(res).to.have.status(200);
+        await tearDownRequest.patch("/api/match-logs/1").send({
+          eastuserpoint: 50,
+          southuserpoint: 10,
+          westuserpoint: -20,
+          northuserpoint: -40,
+        });
+      });
+
+      it("DELETE /api/match-logs/1", async () => {
+        // 準備
+        await tearDownRequest.post("/api/match-logs").send({
+          eastuser: {
+            id: "5",
+          },
+          southuser: {
+            id: "1",
+          },
+          westuser: {
+            id: "2",
+          },
+          northuser: {
+            id: "4",
+          },
+          eastuserpoint: 45,
+          southuserpoint: 6,
+          westuserpoint: -18,
+          northuserpoint: -31,
+          created: "2020-11-15",
+        });
+
+        const res = await request.delete("/api/match-logs/3");
+
+        expect(res).to.have.status(200);
       });
     });
   });

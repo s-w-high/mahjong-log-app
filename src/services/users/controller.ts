@@ -18,12 +18,12 @@ class UserController extends BaseController {
   protected createRouter(): Router {
     const router = Router();
 
-    router.get("/:id", this.get);
+    router.get("/:userId", this.get);
     router.get("/", this.get);
     router.post("/", this.post);
-    router.patch("/:id", this.patch);
+    router.patch("/:userId", this.patch);
     router.delete("/", this.delete);
-    router.delete("/:id", this.delete);
+    router.delete("/:userId", this.delete);
 
     return router;
   }
@@ -34,7 +34,7 @@ class UserController extends BaseController {
     next: NextFunction
   ): Promise<void> => {
     try {
-      if (!req.params.id) {
+      if (!req.params.userId) {
         const user = await this.manager.getAllUser();
         let resultUser = [];
         _.pick(
@@ -44,7 +44,7 @@ class UserController extends BaseController {
         );
         res.json(resultUser);
       } else {
-        const userId = req.params.id;
+        const userId = req.params.userId;
         const user = await this.manager.getUser(userId);
         if (!user) {
           res.status(404).send({ error: "user not found" });
@@ -78,7 +78,7 @@ class UserController extends BaseController {
     next: NextFunction
   ): Promise<void> => {
     try {
-      const userId = req.params.id;
+      const userId = req.params.userId;
       const newUserDetails = req.body;
 
       const updatedUser = await this.manager.updateUser(userId, newUserDetails);
@@ -94,10 +94,10 @@ class UserController extends BaseController {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    const { userName } = req.params;
+    const userId = req.params.userid;
 
     try {
-      await this.manager.removeUser(userName);
+      await this.manager.removeUser(userId);
       res.status(200).end();
     } catch (err) {
       next(err);

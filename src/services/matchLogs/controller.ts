@@ -22,9 +22,8 @@ class MatchLogController extends BaseController {
     router.get("/users/:userId/match-logs", this.get);
     router.get("/users/:userId/match-logs/:matchId", this.get);
     router.post("/users/:userId/match-logs", this.post);
-    router.patch("/users/:userId/match-logs/:matchId", this.patch);
-    router.delete("/users/:userId/match-logs/", this.delete);
-    router.delete("/users/:userId/match-logs/:matchId", this.delete);
+    router.patch("/match-logs/:matchId", this.patch);
+    router.delete("/match-logs/:matchId", this.delete);
 
     return router;
   }
@@ -84,53 +83,40 @@ class MatchLogController extends BaseController {
     }
   };
 
-  // protected patch = async (
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction
-  // ): Promise<void> => {
-  //   try {
-  //     const userName = req.params.userName;
-  //     const matchId = req.params.id;
-  //     const newMatchLogDetails = req.body;
+  protected patch = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    try {
+      const matchId = req.params.matchId;
+      const newMatchLogDetails = req.body;
 
-  //     const updatedUser = await this.manager.updateMatchLog(
-  //       userName,
-  //       matchId,
-  //       newMatchLogDetails
-  //     );
+      const updatedMatch = await this.manager.updateMatchLog(
+        matchId,
+        newMatchLogDetails
+      );
 
-  //     res.statusCode = 200;
-  //     res.end();
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // };
+      res.statusCode = 200;
+      res.end();
+    } catch (err) {
+      next(err);
+    }
+  };
 
-  // protected delete = async (
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction
-  // ): Promise<void> => {
-  //   if(!req.params.id){
-  //     const userName = req.params.userName;
-  //     try {
-  //       await this.manager.removeMatchLog(userName);
-  //       res.status(200).end();
-  //     } catch (err) {
-  //       next(err);
-  //     }
-  //   } else {
-  //     const userName = req.params.userName;
-  //     const matchId = req.params.id;
-  //     try {
-  //       await this.manager.removeMatchLogByMatch(userName, matchId);
-  //       res.status(200).end();
-  //     } catch (err) {
-  //       next(err);
-  //     }
-  //   }
-  // };
+  protected delete = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
+    const matchId = req.params.matchId;
+    try {
+      await this.manager.removeMatchLogByMatch(matchId);
+      res.status(200).end();
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 
 export default MatchLogController;

@@ -49,33 +49,28 @@ class MatchLogManager implements IManager {
     return this.matchLogRepository.save(newMatchLog);
   }
 
-  // public async updateUser(
-  //   userName: string,
-  //   updates: Partial<User>
-  // ): Promise<User> {
-  //   const updateUser = await this.userRepository.findOne({
-  //     username: userName,
-  //   });
-  //   if (updateUser) {
-  //     Object.assign(updateUser, updates);
-  //     await this.userRepository.save(updateUser);
-  //   }
-  //   return Promise.resolve(updateUser);
-  // }
+  public async updateMatchLog(
+    matchId: string,
+    updates: Partial<MatchLog>
+  ): Promise<MatchLog> {
+    const updateMatchLog = await this.matchLogRepository.findOne({
+      id: matchId,
+    });
+    if (updateMatchLog) {
+      Object.assign(updateMatchLog, updates);
+      await this.matchLogRepository.save(updateMatchLog);
+    }
+    return Promise.resolve(updateMatchLog);
+  }
 
-  // public async removeUser(userName: string): Promise<DeleteResult | void> {
-  //   const deleteUser = await this.userRepository.delete({ username: userName });
-  //   return Promise.resolve(deleteUser);
-  // }
-
-  // public async verifyAndGetUser(userName: string): Promise<User> {
-  //   const user = await this.userRepository.findOne({ username: userName });
-  //   if (!user) {
-  //     throw new Error("username not found");
-  //   }
-
-  //   return user;
-  // }
+  public async removeMatchLogByMatch(
+    matchId: string
+  ): Promise<DeleteResult | void> {
+    const deleteMatchLog = await this.matchLogRepository.delete({
+      id: matchId,
+    });
+    return Promise.resolve(deleteMatchLog);
+  }
 }
 
 export default MatchLogManager;

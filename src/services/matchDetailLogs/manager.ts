@@ -54,15 +54,6 @@ class MatchDetailLogManager implements IManager {
   // const deleteUser = await this.userRepository.delete({ username: userName });
   // return Promise.resolve(deleteUser);
   //}
-
-  // public async verifyAndGetUser(userName: string): Promise<MatchDetailLog> {
-  // const user = await this.userRepository.findOne({ username: userName });
-  // if (!user) {
-  //   throw new Error("username not found");
-  // }
-
-  // return user;
-  //}
 }
 
 export default MatchDetailLogManager;
