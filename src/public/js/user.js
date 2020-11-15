@@ -91,7 +91,7 @@ $("#edit").click(function() {
   $.ajax({
     url: baseURL + "/api/users/" + userId,
     type: "patch",
-    data: JSON.stringify(patchData),
+    data: patchData,
   })
     .done((data) => {
       alert("変更完了しました。");

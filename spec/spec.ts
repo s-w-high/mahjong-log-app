@@ -34,17 +34,6 @@ describe("The express server", () => {
     userRepo = getRepository(User);
   });
 
-  // after(async () => {
-  //   await userRepo.delete({ id: Not(IsNull()) });
-  // });
-
-  // beforeEach(async () => {
-  //   let testUser = new User();
-  //   testUser.id = TEST_USER_ID;
-  //   testUser.username = "sakai";
-  //   testUser = await userRepo.save(testUser);
-  // });
-
   describe("Mahjong App", () => {
     describe("users test", () => {
       it("GET /api/users:username one user", async () => {
@@ -52,8 +41,8 @@ describe("The express server", () => {
         expect(res).to.have.status(200);
         expect(JSON.parse(res.text)).to.deep.equal({
           id: 1,
-          username: "sakai",
-          email: "sakai@nri.co.jp",
+          username: "園田賢",
+          email: "",
         });
       });
 
@@ -72,22 +61,22 @@ describe("The express server", () => {
       it("POST /api/users", async () => {
         const res = await request.post("/api/users").send({
           username: "tanaka",
-          email: "tanaka@nri.co.jp",
+          email: "tanaka@tanaka.com",
           password: "xxxxxx",
         });
 
         expect(res).to.have.status(201);
-        await tearDownRequest.delete("/api/users/7");
+        await tearDownRequest.delete("/api/users/31");
       });
 
       it("PATCH /api/users/:id", async () => {
         const res = await request.patch("/api/users/3").send({
-          username: "iwashitaiwashita",
+          username: "test",
         });
 
         expect(res).to.have.status(200);
         await tearDownRequest.patch("/api/users/3").send({
-          username: "iwashita",
+          username: "園田賢",
         });
       });
 
@@ -98,7 +87,7 @@ describe("The express server", () => {
           password: "xxxxxx",
         });
 
-        const res = await request.delete("/api/users/8");
+        const res = await request.delete("/api/users/32");
 
         expect(res).to.have.status(200);
       });
@@ -114,7 +103,16 @@ describe("The express server", () => {
       it("GET /api/users/:id/match-logs", async () => {
         const res = await request.get("/api/users/1/match-logs");
         let expected = [];
-        expected.push(testMatchLogData[0]);
+        expected.push(testMatchLogData[6]);
+        expected.push(testMatchLogData[12]);
+        expect(res).to.have.status(200);
+        expect(JSON.parse(res.text)).to.deep.equal(expected);
+      });
+
+      it("GET /api/users/:id/match-logs/:id", async () => {
+        const res = await request.get("/api/users/1/match-logs/7");
+        let expected = [];
+        expected.push(testMatchLogData[6]);
         expect(res).to.have.status(200);
         expect(JSON.parse(res.text)).to.deep.equal(expected);
       });
@@ -137,11 +135,11 @@ describe("The express server", () => {
           southuserpoint: 5,
           westuserpoint: -15,
           northuserpoint: -50,
-          created: "2020-11-13",
+          created: "2020-11-16",
         });
 
         expect(res).to.have.status(201);
-        await tearDownRequest.patch("/api/match-logs/3");
+        await tearDownRequest.delete("/api/match-logs/17");
       });
 
       it("PATCH /api/users/:userId/match-logs/:matchId", async () => {
@@ -183,7 +181,7 @@ describe("The express server", () => {
           created: "2020-11-15",
         });
 
-        const res = await request.delete("/api/match-logs/3");
+        const res = await request.delete("/api/match-logs/18");
 
         expect(res).to.have.status(200);
       });

@@ -40,6 +40,10 @@
       ```
       $ yarn migrate
       ```
+      5 以下のコマンドで DB にデータ（11 月分）を入れます。auto_increment が 1 からになっていない場合はリセットしてください。
+      ```
+      $ yarn seed
+      ```
 
 4. 以下のコマンドで実行し、[http://localhost:3000](http://localhost:3000)で起動します。
    ```
@@ -51,13 +55,13 @@
 このアプリでは以下のエンドポイントを受け付けます。
 |エンドポイント|HTTP メソッド|説明|
 |-|-|-|
-|`/api/users`|GET| ユーザーの一覧を返します。<br> クエリパラメータで`limit=n`を指定すると`n`件のみ取得できます。|
+|`/api/users`|GET| ユーザーの一覧を返します。|
 |`/api/users/:userId`|GET| 指定した ID のユーザー情報を返します。|
 |`/api/users`|POST|ユーザーを追加します。|
 |`/api/users/:userId`|PATCH|指定した ID のユーザーの情報を変更します。|
 |`/api/users/:userId`|DELETE|指定した ID のユーザーを削除します。|
-|`/api/match-logs`|GET| 全ユーザーの戦績一覧を返します。<br> クエリパラメータで`limit=n`を指定すると`n`件のみ取得できます。|
-|`/api/users/:userId/match-logs`|GET|指定した ID のユーザーの戦績一覧を返します。<br> クエリパラメータで`limit=n`を指定すると`n`件のみ取得できます。|
+|`/api/match-logs`|GET| 全ユーザーの戦績一覧を返します。|
+|`/api/users/:userId/match-logs`|GET|指定した ID のユーザーの戦績一覧を返します。|
 |`/api/users/:userId/match-logs/:matchId`|GET| 指定した ID ユーザーで、指定した ID のの戦績を返します。|
 |`/api/match-logs`|POST| 指定した ID のユーザーの戦績を追加します。|
 |`/api/match-logs/:id`|PATCH| 指定した ID ユーザーで、指定した ID のの戦績を変更します。|

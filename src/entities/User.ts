@@ -12,11 +12,13 @@ class User {
 
   @Column({
     length: 100,
+    nullable: true,
   })
   public email: string;
 
   @Column({
     length: 100,
+    nullable: true,
   })
   public passwordhash: string;
 }

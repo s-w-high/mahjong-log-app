@@ -8,8 +8,8 @@ export = {
   entities: ["src/entities/**/*.ts"],
   migrations: ["src/migrations/**/*.ts"],
   seeds: [
-    "src/seeds/initDb.ts",
-    "src/seeds/CreateDummyUser.ts",
+    //"src/seeds/initDb.ts",
+    //"src/seeds/CreateDummyUser.ts",
     "src/seeds/CreateDummyMatchLog.ts",
   ],
   logging: false,

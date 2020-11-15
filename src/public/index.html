@@ -39,14 +39,17 @@
     </div>
     <hr />
     <h2>Mリーグ2020データに関するAPIサービス</h2>
+    <a href="https://github.com/s1a2k1a3i/mahjong-log-app"
+      ><h3>githubリンク</h3></a
+    >
     <table class="table">
       <thead>
         <tr>
           <th scope="col" style="width: 15%;">APIサービス</th>
-          <th scope="col" style="width: 10%;">HTTPメソッド</th>
+          <th scope="col" style="width: 5%;">HTTPメソッド</th>
           <th scope="col" style="width: 30%;">説明</th>
-          <th scope="col" style="width: 10%;">リクエスト</th>
-          <th scope="col" style="width: 30%;">レスポンス</th>
+          <th scope="col" style="width: 15%;">リクエスト</th>
+          <th scope="col" style="width: 35%;">レスポンス</th>
         </tr>
       </thead>
       <tbody>
@@ -54,7 +57,7 @@
           <td>/api/users</td>
           <td>GET</td>
           <td>
-            ユーザーの一覧を返します。クエリパラメータでlimit=nを指定するとn件のみ取得できます。
+            ユーザーの一覧を返します。
           </td>
           <td>
             <button class="btn btn-success" onclick="getAllUser()">
@@ -71,6 +74,7 @@
             <button class="btn btn-success" onclick="getUser()">
               リクエスト
             </button>
+            <br />（10番：岡田選手）
           </td>
           <td id="getUser"></td>
         </tr>
@@ -110,10 +114,7 @@
         <tr>
           <td>/api/match-logs</td>
           <td>GET</td>
-          <td>
-            全ユーザーの戦績一覧を返します。<br />
-            クエリパラメータでlimit=nを指定するとn件のみ取得できます。
-          </td>
+          <td>全ユーザーの戦績一覧を返します。<br /></td>
           <td>
             <button class="btn btn-success" onclick="getAllMatchLog()">
               リクエスト
@@ -125,12 +126,13 @@
           <td>/api/users/:userId/match-logs</td>
           <td>GET</td>
           <td>
-            ユーザーの一覧を返します。クエリパラメータでlimit=nを指定するとn件のみ取得できます。
+            指定した ID のユーザーの戦績一覧を返します。
           </td>
           <td>
             <button class="btn btn-success" onclick="getMatchLog()">
               リクエスト
             </button>
+            <br />（10番：岡田選手）
           </td>
           <td id="getMatchLog"></td>
         </tr>
@@ -142,6 +144,7 @@
             <button class="btn btn-success" onclick="getOneMatchLog()">
               リクエスト
             </button>
+            <br />（岡田選手の11/6の試合）
           </td>
           <td id="getOneMatchLog"></td>
         </tr>

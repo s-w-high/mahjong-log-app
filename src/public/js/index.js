@@ -51,13 +51,14 @@ function addUser() {
 
 function updateUser() {
   $.ajax({
-    url: baseURL + "/api/users/1",
+    url: baseURL + "/api/users/4",
     type: "patch",
-    data: JSON.stringify({
+    data: {
       username: "test",
-    }),
+    },
   })
     .done((data, status, xhr) => {
+      console.log(data);
       $("#updateUser").empty();
       $("#updateUser").append("status:" + xhr.status);
     })
@@ -87,7 +88,7 @@ function getAllMatchLog() {
 
 function getMatchLog() {
   $.ajax({
-    url: baseURL + "/api/match-logs/1",
+    url: baseURL + "/api/users/10/match-logs",
     dataType: "json",
   }).done((data) => {
     $("#getMatchLog").empty();
@@ -97,7 +98,7 @@ function getMatchLog() {
 
 function getOneMatchLog() {
   $.ajax({
-    url: baseURL + "/api/users/1/match-logs/1",
+    url: baseURL + "/api/users/10/match-logs/8",
     dataType: "json",
   }).done((data) => {
     $("#getOneMatchLog").empty();
@@ -145,12 +146,12 @@ function updateMatchLog() {
   $.ajax({
     url: baseURL + "/api/match-logs/2",
     type: "patch",
-    data: JSON.stringify({
+    data: {
       eastuserpoint: 50,
       southuserpoint: 5,
       westuserpoint: -5,
       northuserpoint: -50,
-    }),
+    },
   })
     .done((data, status, xhr) => {
       $("#updateMatchLog").empty();

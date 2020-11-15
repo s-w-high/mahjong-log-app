@@ -80,7 +80,6 @@ class UserController extends BaseController {
     try {
       const userId = req.params.userId;
       const newUserDetails = req.body;
-
       const updatedUser = await this.manager.updateUser(userId, newUserDetails);
 
       res.json(_.pick(updatedUser, ["id", "username"]));
