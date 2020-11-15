@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from "typeorm";
+import Team from "./Team";
 
 @Entity({ name: "m_users" })
 class User {
@@ -10,11 +17,9 @@ class User {
   })
   public username: string;
 
-  @Column({
-    length: 100,
-    nullable: true,
-  })
-  public team: string;
+  @ManyToOne((type) => Team, { onDelete: "CASCADE" })
+  @JoinColumn()
+  public team: Team;
 
   @Column({
     length: 100,

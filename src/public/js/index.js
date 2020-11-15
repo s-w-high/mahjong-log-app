@@ -27,6 +27,20 @@ function getUser() {
     });
 }
 
+function getUserByTeam() {
+  $.ajax({
+    url: baseURL + "/api/users/team/1",
+    dataType: "json",
+  })
+    .done((data) => {
+      $("#getUserByTeam").empty();
+      $("#getUserByTeam").append(JSON.stringify(data));
+    })
+    .fail(() => {
+      alert("エラーが発生しました。");
+    });
+}
+
 function addUser() {
   $.ajax({
     url: baseURL + "/api/users",

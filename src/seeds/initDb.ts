@@ -2,21 +2,21 @@ import { Factory, Seeder } from "typeorm-seeding";
 import { Connection, getRepository, Repository } from "typeorm";
 import User from "../entities/User";
 import MatchLog from "../entities/MatchLog";
-import MatchDetailLog from "../entities/MatchDetailLog";
+import Team from "../entities/Team";
 
 export default class DBInit implements Seeder {
   protected userRepository: Repository<User>;
   protected matchLogRepository: Repository<MatchLog>;
-  protected matchDetailLogRepository: Repository<MatchDetailLog>;
+  protected teamRepository: Repository<Team>;
 
   constructor() {
     this.userRepository = getRepository(User);
     this.matchLogRepository = getRepository(MatchLog);
-    this.matchDetailLogRepository = getRepository(MatchDetailLog);
+    this.teamRepository = getRepository(Team);
   }
   public async run(factory: Factory, connection: Connection): Promise<any> {
+    await this.teamRepository.delete({});
     await this.userRepository.delete({});
     await this.matchLogRepository.delete({});
-    await this.matchDetailLogRepository.delete({});
   }
 }

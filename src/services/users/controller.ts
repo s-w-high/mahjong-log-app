@@ -18,8 +18,9 @@ class UserController extends BaseController {
   protected createRouter(): Router {
     const router = Router();
 
-    router.get("/:userId", this.get);
     router.get("/", this.get);
+    router.get("/:userId", this.get);
+    router.get("/team/:teamId", this.get);
     router.post("/", this.post);
     router.patch("/:userId", this.patch);
     router.delete("/", this.delete);
@@ -34,23 +35,31 @@ class UserController extends BaseController {
     next: NextFunction
   ): Promise<void> => {
     try {
-      if (!req.params.userId) {
+      if (!req.params.userId && !req.params.teamId) {
         const user = await this.manager.getAllUser();
         let resultUser = [];
         _.pick(
           user.forEach((user) => {
-            resultUser.push(_.pick(user, ["id", "username", "team", "email"]));
+            resultUser.push(_.pick(user, ["id", "username", "email"]));
           })
         );
         res.json(resultUser);
-      } else {
+      } else if (req.params.userId) {
         const userId = req.params.userId;
         const user = await this.manager.getUser(userId);
         if (!user) {
           res.status(404).send({ error: "user not found" });
           return;
         }
-        res.json(_.pick(user, ["id", "username", "team", "email"]));
+        res.json(_.pick(user, ["id", "username", "email"]));
+      } else if (req.params.teamId) {
+        const team = req.params.teamId;
+        const user = await this.manager.getUserByTeam(team);
+        if (!user) {
+          res.status(404).send({ error: "user not found" });
+          return;
+        }
+        res.json(_.pick(user, ["id", "username", "email"]));
       }
     } catch (err) {
       next(err);

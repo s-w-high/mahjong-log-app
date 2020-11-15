@@ -79,6 +79,18 @@
           <td id="getUser"></td>
         </tr>
         <tr>
+          <td>/api/users/team/:teamId</td>
+          <td>GET</td>
+          <td>指定したチームのユーザー情報を返します。</td>
+          <td>
+            <button class="btn btn-success" onclick="getUserByTeam()">
+              リクエスト
+            </button>
+            <br />（1番：赤坂ドリブンズ）
+          </td>
+          <td id="getUserByTeam"></td>
+        </tr>
+        <tr>
           <td>/api/users</td>
           <td>POST</td>
           <td>ユーザーを追加します。</td>

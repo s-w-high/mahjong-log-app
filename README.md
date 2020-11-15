@@ -57,6 +57,7 @@
 |-|-|-|
 |`/api/users`|GET| ユーザーの一覧を返します。|
 |`/api/users/:userId`|GET| 指定した ID のユーザー情報を返します。|
+|`/api/users/team/:teamId`|GET| 指定したチームのユーザー情報を返します。|
 |`/api/users`|POST|ユーザーを追加します。|
 |`/api/users/:userId`|PATCH|指定した ID のユーザーの情報を変更します。|
 |`/api/users/:userId`|DELETE|指定した ID のユーザーを削除します。|

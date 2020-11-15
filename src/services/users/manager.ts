@@ -26,6 +26,15 @@ class UserManager implements IManager {
     return Promise.resolve(user);
   }
 
+  public async getUserByTeam(teamId: string): Promise<User[]> {
+    const user = await this.userRepository.find({
+      team: {
+        id: teamId,
+      },
+    });
+    return Promise.resolve(user);
+  }
+
   public async createUser(userDetails: Partial<UserInput>): Promise<User> {
     const saltRound = 10;
     const passwordHash = await bcrypt.hash(userDetails.password, saltRound);
