@@ -37,7 +37,7 @@ class MatchLog {
   @Column()
   public westuserpoint: Number;
 
-  @Column()
+  @Column({ nullable: true })
   public northuserpoint: Number;
 
   @Column()

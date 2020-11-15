@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>ユーザー登録</title>
     <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/match.css" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -26,6 +27,139 @@
 
     <h1>成績管理（3麻）</h1>
     <hr />
-    <script src="./js/match.js"></script>
+    <h3>通算成績</h3>
+    <div class="all">
+      <table class="table" id="rank">
+        <thead>
+          <tr>
+            <th scope="col">1着</th>
+            <th scope="col">2着</th>
+            <th scope="col">3着</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <hr />
+      <table class="table" id="grade">
+        <thead>
+          <tr>
+            <th scope="col">トップ率</th>
+            <th scope="col">平均着順</th>
+            <th scope="col">3着回避率</th>
+            <th scope="col">総得点</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <hr />
+    <h3>成績登録</h3>
+    <p style="font-weight: bold">1. 選手を登録してください</p>
+    <form class="form-inline" id="user">
+      <div class="form-group">
+        <label>東家</label>
+        <select
+          id="eastUserSelect"
+          class="form-control"
+          name="eastusername"
+          required
+        >
+          <option value=""></option
+        ></select>
+      </div>
+      <div class="form-group">
+        <label> 南家</label>
+        <select
+          id="southUserSelect"
+          class="form-control"
+          name="southusername"
+          required
+        >
+          <option value=""></option
+        ></select>
+      </div>
+      <div class="form-group">
+        <label> 西家</label>
+        <select
+          id="westUserSelect"
+          class="form-control"
+          name="westusername"
+          required
+        >
+          <option value=""></option
+        ></select>
+      </div>
+      <button type="submit" class="btn btn-success">登録</button>
+    </form>
+
+    <p style="font-weight: bold">2. 局収支を登録してください</p>
+    <form class="form-inline" id="match">
+      <div class="form-group">
+        <label>東家</label>
+        <input
+          type="text"
+          class="form-control"
+          id="eastuserpoint"
+          name="eastuserpoint"
+          placeholder="東家ポイント"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label> 南家</label>
+        <input
+          type="text"
+          class="form-control"
+          id="southuserpoint"
+          name="southuserpoint"
+          placeholder="南家ポイント"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label> 西家</label>
+        <input
+          type="text"
+          class="form-control"
+          id="westuserpoint"
+          name="westuserpoint"
+          placeholder="西家ポイント"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-success">登録</button>
+    </form>
+    <hr />
+    <h3>本日の成績</h3>
+    <div class="matchlog">
+      <table class="table" id="match">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 10%;">局</th>
+            <th scope="col" style="width: 20%;">東家</th>
+            <th scope="col" style="width: 20%;">南家</th>
+            <th scope="col" style="width: 20%;">西家</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>
+              <div id="eastUser" class="user" contenteditable="true"></div>
+            </th>
+            <th>
+              <div id="southUser" class="user" contenteditable="true"></div>
+            </th>
+            <th>
+              <div id="westUser" class="user" contenteditable="true"></div>
+            </th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script src="./js/match-three.js"></script>
   </body>
 </html>
