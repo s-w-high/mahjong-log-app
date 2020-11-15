@@ -1,3 +1,5 @@
+**このリポジトリは Code Chrysalis の生徒であるときに作成しました（This was created during my time as a student at Code Chrysalis）**
+
 # 麻雀成績管理アプリ
 
 このアプリは麻雀の成績を管理できるアプリです。

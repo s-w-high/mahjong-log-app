@@ -1,0 +1,11 @@
+.all {
+  padding: 0.5em 1em;
+  margin: 1em 0 0 10px;
+  background: #f4f4f4;
+  border-left: solid 6px lightblue;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+  width: 40%;
+}
+/* .user {
+    border: solid 1px #6091d3;
+} */
