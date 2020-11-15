@@ -71,6 +71,8 @@ function drawTable(data) {
       "</td><td>" +
       data[i].username +
       "</td><td>" +
+      data[i].team +
+      "</td><td>" +
       data[i].email +
       "</td></tr>";
   }

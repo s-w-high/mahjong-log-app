@@ -42,6 +42,7 @@ describe("The express server", () => {
         expect(JSON.parse(res.text)).to.deep.equal({
           id: 1,
           username: "園田賢",
+          team: "赤坂ドリブンズ",
           email: "",
         });
       });
@@ -61,6 +62,7 @@ describe("The express server", () => {
       it("POST /api/users", async () => {
         const res = await request.post("/api/users").send({
           username: "tanaka",
+          team: "test",
           email: "tanaka@tanaka.com",
           password: "xxxxxx",
         });
@@ -83,6 +85,7 @@ describe("The express server", () => {
       it("DELETE /api/users", async () => {
         await tearDownRequest.post("/api/users").send({
           username: "test",
+          team: "test",
           email: "test@nri.co.jp",
           password: "xxxxxx",
         });
@@ -186,30 +189,5 @@ describe("The express server", () => {
         expect(res).to.have.status(200);
       });
     });
-
-    // describe.only("match-detail-logs test", () => {
-    //   it("GET /api/match-detail-logs all logs", async () => {
-    //     const res = await request.get("/api/match-detail-logs");
-    //     expect(res).to.have.status(200);
-    //     expect(JSON.parse(res.text)).to.deep.equal(testMatchDetailLogData);
-    //   });
-
-    //   it("GET /api/users/:userId/match-detail-logs", async () => {
-    //     const res = await request.get("/api/users/1/match-logs");
-    //     let expected = [];
-    //     expected.push(testMatchDetailLogData[1]);
-    //     expected.push(testMatchDetailLogData[2]);
-    //     expect(res).to.have.status(200);
-    //     expect(JSON.parse(res.text)).to.deep.equal(expected);
-    //   });
-
-    //   it("GET /api/match/:matchId/match-detail-logs", async () => {
-    //     const res = await request.get("/api/users/1/match-logs");
-    //     let expected = [];
-    //     expected.push(testMatchDetailLogData[0]);
-    //     expect(res).to.have.status(200);
-    //     expect(JSON.parse(res.text)).to.deep.equal(expected);
-    //   });
-    // });
   });
 });

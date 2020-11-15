@@ -1,306 +1,130 @@
 [
   {
-    "eastuser": {
-      "id": "6"
-    },
-    "southuser": {
-      "id": "9"
-    },
-    "westuser": {
-      "id": "29"
-    },
-    "northuser": {
-      "id": "18"
-    },
+    "id": 1,
     "eastuserpoint": 59,
     "southuserpoint": -46,
     "westuserpoint": -25,
     "northuserpoint": 12,
-    "created": "2020-11-02"
+    "created": "2020-11-02T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "16"
-    },
-    "southuser": {
-      "id": "28"
-    },
-    "westuser": {
-      "id": "6"
-    },
-    "northuser": {
-      "id": "8"
-    },
+    "id": 2,
     "eastuserpoint": -43,
     "southuserpoint": -15,
     "westuserpoint": 5,
     "northuserpoint": 53,
-    "created": "2020-11-02"
+    "created": "2020-11-02T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "20"
-    },
-    "southuser": {
-      "id": "24"
-    },
-    "westuser": {
-      "id": "4"
-    },
-    "northuser": {
-      "id": "12"
-    },
+    "id": 3,
     "eastuserpoint": -59,
     "southuserpoint": -26,
     "westuserpoint": 6,
     "northuserpoint": 79,
-    "created": "2020-11-03"
+    "created": "2020-11-03T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "2"
-    },
-    "southuser": {
-      "id": "14"
-    },
-    "westuser": {
-      "id": "25"
-    },
-    "northuser": {
-      "id": "21"
-    },
+    "id": 4,
     "eastuserpoint": 54,
     "southuserpoint": -52,
     "westuserpoint": 9,
     "northuserpoint": -11,
-    "created": "2020-11-03"
+    "created": "2020-11-03T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "30"
-    },
-    "southuser": {
-      "id": "17"
-    },
-    "westuser": {
-      "id": "20"
-    },
-    "northuser": {
-      "id": "26"
-    },
+    "id": 5,
     "eastuserpoint": -54,
     "southuserpoint": 15,
     "westuserpoint": 61,
     "northuserpoint": 22,
-    "created": "2020-11-05"
+    "created": "2020-11-05T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "24"
-    },
-    "southuser": {
-      "id": "20"
-    },
-    "westuser": {
-      "id": "19"
-    },
-    "northuser": {
-      "id": "27"
-    },
+    "id": 6,
     "eastuserpoint": -20,
     "southuserpoint": 3,
     "westuserpoint": -60,
     "northuserpoint": 77,
-    "created": "2020-11-05"
+    "created": "2020-11-05T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "11"
-    },
-    "southuser": {
-      "id": "5"
-    },
-    "westuser": {
-      "id": "13"
-    },
-    "northuser": {
-      "id": "1"
-    },
+    "id": 7,
     "eastuserpoint": -52,
     "southuserpoint": 68,
     "westuserpoint": -23,
     "northuserpoint": 7,
-    "created": "2020-11-06"
+    "created": "2020-11-06T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "12"
-    },
-    "southuser": {
-      "id": "3"
-    },
-    "westuser": {
-      "id": "10"
-    },
-    "northuser": {
-      "id": "7"
-    },
+    "id": 8,
     "eastuserpoint": 78,
     "southuserpoint": -22,
     "westuserpoint": -71,
     "northuserpoint": 15,
-    "created": "2020-11-06"
+    "created": "2020-11-06T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "28"
-    },
-    "southuser": {
-      "id": "25"
-    },
-    "westuser": {
-      "id": "22"
-    },
-    "northuser": {
-      "id": "14"
-    },
+    "id": 9,
     "eastuserpoint": -21,
     "southuserpoint": 55,
     "westuserpoint": -42,
     "northuserpoint": 8,
-    "created": "2020-11-09"
+    "created": "2020-11-09T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "21"
-    },
-    "southuser": {
-      "id": "15"
-    },
-    "westuser": {
-      "id": "29"
-    },
-    "northuser": {
-      "id": "26"
-    },
+    "id": 10,
     "eastuserpoint": -71,
     "southuserpoint": 78,
     "westuserpoint": -17,
     "northuserpoint": 10,
-    "created": "2020-11-09"
+    "created": "2020-11-09T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "7"
-    },
-    "southuser": {
-      "id": "2"
-    },
-    "westuser": {
-      "id": "8"
-    },
-    "northuser": {
-      "id": "16"
-    },
+    "id": 11,
     "eastuserpoint": 71,
     "southuserpoint": -22,
     "westuserpoint": 6,
     "northuserpoint": -55,
-    "created": "2020-11-10"
+    "created": "2020-11-10T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "8"
-    },
-    "southuser": {
-      "id": "17"
-    },
-    "westuser": {
-      "id": "6"
-    },
-    "northuser": {
-      "id": "3"
-    },
+    "id": 12,
     "eastuserpoint": 4,
     "southuserpoint": 63,
     "westuserpoint": -46,
     "northuserpoint": -21,
-    "created": "2020-11-10"
+    "created": "2020-11-10T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "24"
-    },
-    "southuser": {
-      "id": "10"
-    },
-    "westuser": {
-      "id": "1"
-    },
-    "northuser": {
-      "id": "23"
-    },
+    "id": 13,
     "eastuserpoint": -48,
     "southuserpoint": -25,
     "westuserpoint": 13,
     "northuserpoint": 60,
-    "created": "2020-11-12"
+    "created": "2020-11-12T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "2"
-    },
-    "southuser": {
-      "id": "20"
-    },
-    "westuser": {
-      "id": "26"
-    },
-    "northuser": {
-      "id": "11"
-    },
+    "id": 14,
     "eastuserpoint": 58,
     "southuserpoint": -49,
     "westuserpoint": -25,
     "northuserpoint": 16,
-    "created": "2020-11-12"
+    "created": "2020-11-12T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "18"
-    },
-    "southuser": {
-      "id": "7"
-    },
-    "westuser": {
-      "id": "14"
-    },
-    "northuser": {
-      "id": "27"
-    },
+    "id": 15,
     "eastuserpoint": -25,
     "southuserpoint": 78,
     "westuserpoint": -71,
     "northuserpoint": 18,
-    "created": "2020-11-13"
+    "created": "2020-11-13T00:00:00.000Z"
   },
   {
-    "eastuser": {
-      "id": "13"
-    },
-    "southuser": {
-      "id": "30"
-    },
-    "westuser": {
-      "id": "19"
-    },
-    "northuser": {
-      "id": "5"
-    },
+    "id": 16,
     "eastuserpoint": -23,
     "southuserpoint": 60,
     "westuserpoint": 14,
     "northuserpoint": -51,
-    "created": "2020-11-13"
+    "created": "2020-11-13T00:00:00.000Z"
   }
 ]

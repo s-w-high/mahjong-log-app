@@ -11,7 +11,7 @@
     "start": "node ./src/index.ts",
     "dev": "nodemon ./src/index.ts",
     "lint": "eslint --fix --ext .ts .",
-    "test": "yarn seed && mocha --inspect -r ts-node/register -r dotenv/config spec/spec.ts",
+    "test": "mocha --inspect -r ts-node/register -r dotenv/config spec/spec.ts",
     "testConnection": "ts-node -r dotenv/config src/scripts/testConnection.ts",
     "build": "tsc -p .",
     "orm": "ts-node -r dotenv/config ./node_modules/typeorm/cli.js --config src/ormconfig.ts",

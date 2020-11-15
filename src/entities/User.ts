@@ -14,6 +14,12 @@ class User {
     length: 100,
     nullable: true,
   })
+  public team: string;
+
+  @Column({
+    length: 100,
+    nullable: true,
+  })
   public email: string;
 
   @Column({
