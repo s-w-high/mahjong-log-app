@@ -95,7 +95,6 @@ $("#searchTeam").click(function() {
 });
 
 function drawTable(data) {
-  console.log(data);
   $(".table tbody").empty();
   let html = "";
   for (let i = 0; i < data.length; i++) {
