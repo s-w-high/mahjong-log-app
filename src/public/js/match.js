@@ -13,10 +13,8 @@ function getData() {
 
 function viewGrade(data) {
   // デモ用にsakaiがeastuserだとして計算する
-  const matchLog = data.map((matchData) => {
-    return matchData["eastuserpoint"];
-  });
-  let gradeArr = [];
+  let rankArr = [];
+  let total = 0;
   for (let i = 0; i < data.length; i++) {
     let rank = 1;
     const point = data[i].eastuserpoint;
@@ -38,28 +36,51 @@ function viewGrade(data) {
     } else {
       rank = 4;
     }
-    gradeArr.push(rank);
+    rankArr.push(rank);
+    total += data[i].eastuserpoint;
   }
-  let html =
+
+  let gradeArr = [];
+  for (let i = 1; i <= 4; i++) {
+    gradeArr.push(
+      rankArr.filter((rank) => {
+        return rank == i;
+      }).length
+    );
+  }
+
+  let rankHtml =
     "<tr><td>" +
-    gradeArr.filter((grade) => {
-      return grade == 1;
-    }).length +
+    gradeArr[0] +
     "</td><td>" +
-    gradeArr.filter((grade) => {
-      return grade == 2;
-    }).length +
+    gradeArr[1] +
     "</td><td>" +
-    gradeArr.filter((grade) => {
-      return grade == 3;
-    }).length +
+    gradeArr[2] +
     "</td><td>" +
-    gradeArr.filter((grade) => {
-      return grade == 4;
-    }).length +
+    gradeArr[3] +
     "</td></tr>";
 
-  $("#grade tbody").append(html);
+  $("#rank tbody").append(rankHtml);
+
+  const goodRate = ((gradeArr[0] + gradeArr[1]) * 100) / data.length; //連帯率
+  const addGrade =
+    (gradeArr[0] * 1 + gradeArr[1] * 2 + gradeArr[2] * 3 + gradeArr[3] * 4) /
+    data.length; //平均着順
+  const avoidForthRankRate =
+    ((gradeArr[0] + gradeArr[1] + gradeArr[2]) * 100) / data.length; // 4着回避率
+
+  let gradeHtml =
+    "<tr><td>" +
+    goodRate.toFixed(2) +
+    "%</td><td>" +
+    addGrade.toFixed(2) +
+    "</td><td>" +
+    avoidForthRankRate.toFixed(2) +
+    "%</td><td>" +
+    total +
+    "</td></tr>";
+
+  $("#grade tbody").append(gradeHtml);
 }
 
 function drawTable(data) {
