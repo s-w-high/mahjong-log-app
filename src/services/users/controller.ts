@@ -53,13 +53,15 @@ class UserController extends BaseController {
         }
         res.json(_.pick(user, ["id", "username", "team", "email"]));
       } else if (req.params.teamId) {
-        const team = req.params.teamId;
-        const user = await this.manager.getUserByTeam(team);
-        if (!user) {
-          res.status(404).send({ error: "user not found" });
-          return;
-        }
-        res.json(_.pick(user, ["id", "username", "team", "email"]));
+        const teamId = req.params.teamId;
+        const user = await this.manager.getUserByTeam(teamId);
+        let resultUser = [];
+        _.pick(
+          user.forEach((user) => {
+            resultUser.push(_.pick(user, ["id", "username", "team", "email"]));
+          })
+        );
+        res.json(resultUser);
       }
     } catch (err) {
       next(err);

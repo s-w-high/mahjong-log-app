@@ -82,15 +82,12 @@ $("#searchTeam").click(function() {
   $(".table tbody").append("");
 
   const teamId = document.getElementById("teamId").value;
-  console.log(teamId);
   $.ajax({
     url: baseURL + "/api/users/team/" + teamId,
     dataType: "json",
   })
     .done((data) => {
-      let dataArr = [];
-      dataArr.push(data);
-      drawTable(dataArr);
+      drawTable(data);
     })
     .fail(() => {
       alert("エラーが発生しました。");
@@ -98,6 +95,7 @@ $("#searchTeam").click(function() {
 });
 
 function drawTable(data) {
+  console.log(data);
   $(".table tbody").empty();
   let html = "";
   for (let i = 0; i < data.length; i++) {
