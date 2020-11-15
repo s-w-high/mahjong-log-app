@@ -38,26 +38,148 @@
       <a href="/match-three" class="match-three-button">3人麻雀</a>
     </div>
     <hr />
-    <h2>オススメ麻雀コンテンツ</h2>
-    <h3>ひなたんの麻雀するしない</h3>
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/FTIhSJr6Ta8"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-    <br />
-    <h3>Mリーグ</h3>
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/_smR9AZJ344"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
+    <h2>Mリーグ2020データに関するAPIサービス</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 15%;">APIサービス</th>
+          <th scope="col" style="width: 10%;">HTTPメソッド</th>
+          <th scope="col" style="width: 30%;">説明</th>
+          <th scope="col" style="width: 10%;">リクエスト</th>
+          <th scope="col" style="width: 30%;">レスポンス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>/api/users</td>
+          <td>GET</td>
+          <td>
+            ユーザーの一覧を返します。クエリパラメータでlimit=nを指定するとn件のみ取得できます。
+          </td>
+          <td>
+            <button class="btn btn-success" onclick="getAllUser()">
+              リクエスト
+            </button>
+          </td>
+          <td id="getAllUser"></td>
+        </tr>
+        <tr>
+          <td>/api/users/:userId</td>
+          <td>GET</td>
+          <td>指定した ID のユーザー情報を返します。</td>
+          <td>
+            <button class="btn btn-success" onclick="getUser()">
+              リクエスト
+            </button>
+          </td>
+          <td id="getUser"></td>
+        </tr>
+        <tr>
+          <td>/api/users</td>
+          <td>POST</td>
+          <td>ユーザーを追加します。</td>
+          <td>
+            <button class="btn btn-success" onclick="addUser()">
+              リクエスト
+            </button>
+          </td>
+          <td id="addUser"></td>
+        </tr>
+        <tr>
+          <td>/api/users/:userId</td>
+          <td>PATCH</td>
+          <td>指定した ID のユーザーの情報を変更します。</td>
+          <td>
+            <button class="btn btn-success" onclick="patchUser()">
+              リクエスト
+            </button>
+          </td>
+          <td id="updateUser"></td>
+        </tr>
+        <tr>
+          <td>/api/users/:userId</td>
+          <td>DELETE</td>
+          <td>指定した ID のユーザーを削除します。</td>
+          <td>
+            <button class="btn btn-success" onclick="deleteUser()">
+              リクエスト
+            </button>
+          </td>
+          <td id="deleteUser"></td>
+        </tr>
+        <tr>
+          <td>/api/match-logs</td>
+          <td>GET</td>
+          <td>
+            全ユーザーの戦績一覧を返します。<br />
+            クエリパラメータでlimit=nを指定するとn件のみ取得できます。
+          </td>
+          <td>
+            <button class="btn btn-success" onclick="getAllMatchLog()">
+              リクエスト
+            </button>
+          </td>
+          <td id="getAllMatchLog"></td>
+        </tr>
+        <tr>
+          <td>/api/users/:userId/match-logs</td>
+          <td>GET</td>
+          <td>
+            ユーザーの一覧を返します。クエリパラメータでlimit=nを指定するとn件のみ取得できます。
+          </td>
+          <td>
+            <button class="btn btn-success" onclick="getMatchLog()">
+              リクエスト
+            </button>
+          </td>
+          <td id="getMatchLog"></td>
+        </tr>
+        <tr>
+          <td>/api/users/:userId/match-logs/:matchId</td>
+          <td>GET</td>
+          <td>指定した ID ユーザーで、指定した ID のの戦績を返します。</td>
+          <td>
+            <button class="btn btn-success" onclick="getOneMatchLog()">
+              リクエスト
+            </button>
+          </td>
+          <td id="getOneMatchLog"></td>
+        </tr>
+        <tr>
+          <td>/api/match-logs</td>
+          <td>POST</td>
+          <td>指定した ID のユーザーの戦績を追加します。</td>
+          <td>
+            <button class="btn btn-success" onclick="addMatchLog()">
+              リクエスト
+            </button>
+          </td>
+          <td id="addMatchLog"></td>
+        </tr>
+        <tr>
+          <td>/api/match-logs/:id</td>
+          <td>PATCH</td>
+          <td>指定した ID ユーザーで、指定した ID のの戦績を変更します。</td>
+          <td>
+            <button class="btn btn-success" onclick="patchMatchLog()">
+              リクエスト
+            </button>
+          </td>
+          <td id="updateMatchLog"></td>
+        </tr>
+        <tr>
+          <td>/api/match-logs/:matchId</td>
+          <td>DELETE</td>
+          <td>指定した ID ユーザーで、指定した ID のの戦績を削除します。</td>
+          <td>
+            <button class="btn btn-success" onclick="deleteMatchLog()">
+              リクエスト
+            </button>
+          </td>
+          <td id="deleteMatchLog"></td>
+        </tr>
+      </tbody>
+    </table>
     <script src="./js/index.js"></script>
   </body>
 </html>

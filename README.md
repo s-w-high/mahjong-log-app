@@ -1,8 +1,10 @@
 **このリポジトリは Code Chrysalis の生徒であるときに作成しました（This was created during my time as a student at Code Chrysalis）**
 
-# 麻雀成績管理アプリ
+# M リーグ 2020 データに関する API サービス
 
-このアプリは麻雀の成績を管理できるアプリです。
+このサービスは M リーグ 2020 データに関する API サービスを提供します。
+
+また、自身の麻雀の成績を管理できます。
 
 ## 起動方法
 
@@ -53,8 +55,7 @@
 |`/api/users/:userId`|GET| 指定した ID のユーザー情報を返します。|
 |`/api/users`|POST|ユーザーを追加します。|
 |`/api/users/:userId`|PATCH|指定した ID のユーザーの情報を変更します。|
-|`/api/users`|DELETE |全ユーザーを削除します。|
-|`/api/users/:userId`|DELETE |指定した ID のユーザーを削除します。|
+|`/api/users/:userId`|DELETE|指定した ID のユーザーを削除します。|
 |`/api/match-logs`|GET| 全ユーザーの戦績一覧を返します。<br> クエリパラメータで`limit=n`を指定すると`n`件のみ取得できます。|
 |`/api/users/:userId/match-logs`|GET|指定した ID のユーザーの戦績一覧を返します。<br> クエリパラメータで`limit=n`を指定すると`n`件のみ取得できます。|
 |`/api/users/:userId/match-logs/:matchId`|GET| 指定した ID ユーザーで、指定した ID のの戦績を返します。|
