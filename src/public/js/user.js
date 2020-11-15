@@ -33,13 +33,17 @@ $(function() {
 });
 
 $(document).ready(function() {
+  getData();
+});
+
+function getData() {
   $.ajax({
     url: baseURL + "/api/users",
     dataType: "json",
   }).done((data) => {
     drawTable(data);
   });
-});
+}
 
 $("#search").click(function() {
   $(".table tbody").append("");
@@ -77,17 +81,25 @@ function drawTable(data) {
 }
 
 $("#edit").click(function() {
-  $(".table tbody").append("");
-
-  const userId = document.getElementById("userId").value;
+  const userId = document.getElementById("patchUserId").value;
+  const patchUserName = document.getElementById("patchUserName").value;
+  const patchUserEmail = document.getElementById("patchUserEmail").value;
+  const patchData = {};
+  if (patchUserName) {
+    patchData["username"] = patchUserName;
+  }
+  if (patchUserEmail) {
+    patchData["email"] = patchUserEmail;
+  }
+  console.log(patchData);
   $.ajax({
     url: baseURL + "/api/users/" + userId,
-    dataType: "json",
+    type: "patch",
+    data: JSON.stringify(patchData),
   })
     .done((data) => {
-      let dataArr = [];
-      dataArr.push(data);
-      drawTable(dataArr);
+      alert("変更完了しました。");
+      getData();
     })
     .fail(() => {
       alert("エラーが発生しました。");
@@ -101,7 +113,8 @@ $("#delete").click(function() {
     type: "delete",
   })
     .done((data) => {
-      alert("削除しました。リロードしてください。");
+      alert("削除しました。");
+      getData();
     })
     .fail(() => {
       alert("エラーが発生しました。");
