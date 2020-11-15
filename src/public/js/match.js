@@ -1,5 +1,5 @@
 const baseURL = "http://localhost:3000";
-let count = 0;
+let user = {};
 
 function getData() {
   $.ajax({
@@ -15,51 +15,63 @@ function drawTable(data) {
   let html = "";
   for (let i = 0; i < data.length; i++) {
     html +=
-      "<tr><td>" +
-      count +
+      "<tr><td></td><td>" +
+      data[i].eastuserpoint +
       "</td><td>" +
-      data[i].eastpoint +
+      data[i].southuserpoint +
       "</td><td>" +
-      data[i].southpoint +
+      data[i].westuserpoint +
       "</td><td>" +
-      data[i].westpoint +
-      "</td><td>" +
-      data[i].northpoint +
+      data[i].northuserpoint +
       "</td></tr>";
   }
-  $(".table tbody").append(html);
+  $("#match tbody").append(html);
 }
+
+$(document).ready(function() {
+  getUserData();
+});
 
 $("form").submit(function() {
   const userData = $("form").serializeArray();
 
-  let east = document.getElementById("eastUser");
-  east.innerHTML = userData[0].value;
-  let south = document.getElementById("southUser");
-  south.innerHTML = userData[1].value;
-  let west = document.getElementById("westUser");
-  west.innerHTML = userData[2].value;
-  let north = document.getElementById("northUser");
-  north.innerHTML = userData[3].value;
+  const east = document.getElementById("eastUser");
+  const south = document.getElementById("southUser");
+  const west = document.getElementById("westUser");
+  const north = document.getElementById("northUser");
 
+  user.forEach((user) => {
+    if (user.id == userData[0].value) east.innerHTML = user.username;
+    if (user.id == userData[1].value) south.innerHTML = user.username;
+    if (user.id == userData[2].value) west.innerHTML = user.username;
+    if (user.id == userData[3].value) north.innerHTML = user.username;
+  });
   return false;
 });
 
 $("#match").submit(function() {
+  // useridを取得
+  const eastUser = { id: document.getElementById("eastUserSelect").value };
+  const southUser = { id: document.getElementById("southUserSelect").value };
+  const westUser = { id: document.getElementById("westUserSelect").value };
+  const northUser = { id: document.getElementById("northUserSelect").value };
+
   let matchData = $("#match").serializeArray();
   matchData = parseJson(matchData);
+  matchData["eastuser"] = eastUser;
+  matchData["southuser"] = southUser;
+  matchData["westuser"] = westUser;
+  matchData["northuser"] = northUser;
+  matchData["created"] = new Date();
 
   $.ajax({
     url: baseURL + "/api/match-logs",
     type: "post",
-    dataType: "json",
     contentType: "application/json",
     scriptCharset: "utf-8",
     data: JSON.stringify(matchData),
   })
     .done(() => {
-      alert("登録完了しました！");
-      count++;
       getData();
     })
     .fail(() => {
@@ -74,24 +86,23 @@ parseJson = function(data) {
   for (let i = 0; i < data.length; i++) {
     returnJson[data[i].name] = data[i].value;
   }
-  returnJson["created"] = Date.now();
   return returnJson;
 };
 
-//   eastuser: {
-//     id: "1",
-//   },
-//   southuser: {
-//     id: "4",
-//   },
-//   westuser: {
-//     id: "2",
-//   },
-//   northuser: {
-//     id: "6",
-//   },
-//   eastuserpoint: 60,
-//   southuserpoint: 5,
-//   westuserpoint: -15,
-//   northuserpoint: -50,
-//   created: "2020-11-13",
+function getUserData() {
+  $.ajax({
+    url: baseURL + "/api/users",
+    dataType: "json",
+  }).done((data) => {
+    let html = "";
+    for (let i = 0; i < data.length; i++) {
+      html +=
+        '<option value="' + data[i].id + '"> ' + data[i].username + "</option>";
+    }
+    $("#eastUserSelect").append(html);
+    $("#southUserSelect").append(html);
+    $("#westUserSelect").append(html);
+    $("#northUserSelect").append(html);
+    user = data;
+  });
+}

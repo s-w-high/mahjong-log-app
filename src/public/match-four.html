@@ -59,41 +59,47 @@
     <form class="form-inline" id="user">
       <div class="form-group">
         <label>東家</label>
-        <select class="form-control" name="eastusername"> </select>
-        <!-- <input type="text" class="form-control" id="eastusername" name="eastusername" class="userForm" placeholder="東家"> -->
+        <select
+          id="eastUserSelect"
+          class="form-control"
+          name="eastusername"
+          required
+        >
+          <option value=""></option
+        ></select>
       </div>
       <div class="form-group">
         <label> 南家</label>
-        <input
-          type="text"
+        <select
+          id="southUserSelect"
           class="form-control"
-          id="southusername"
           name="southusername"
-          class="userForm"
-          placeholder="南家"
-        />
+          required
+        >
+          <option value=""></option
+        ></select>
       </div>
       <div class="form-group">
         <label> 西家</label>
-        <input
-          type="text"
+        <select
+          id="westUserSelect"
           class="form-control"
-          id="westusername"
           name="westusername"
-          class="userForm"
-          placeholder="西家"
-        />
+          required
+        >
+          <option value=""></option
+        ></select>
       </div>
       <div class="form-group">
         <label> 北家</label>
-        <input
-          type="text"
+        <select
+          id="northUserSelect"
           class="form-control"
-          id="northusername"
           name="northusername"
-          class="userForm"
-          placeholder="北家"
-        />
+          required
+        >
+          <option value=""></option
+        ></select>
       </div>
       <button type="submit" class="btn btn-success">登録</button>
     </form>
@@ -105,9 +111,10 @@
         <input
           type="text"
           class="form-control"
-          id="eastpoint"
-          name="eastpoint"
+          id="eastuserpoint"
+          name="eastuserpoint"
           placeholder="東家ポイント"
+          required
         />
       </div>
       <div class="form-group">
@@ -115,9 +122,10 @@
         <input
           type="text"
           class="form-control"
-          id="southpoint"
-          name="southpoint"
+          id="southuserpoint"
+          name="southuserpoint"
           placeholder="南家ポイント"
+          required
         />
       </div>
       <div class="form-group">
@@ -125,9 +133,10 @@
         <input
           type="text"
           class="form-control"
-          id="westpoint"
-          name="westpoint"
+          id="westuserpoint"
+          name="westuserpoint"
           placeholder="西家ポイント"
+          required
         />
       </div>
       <div class="form-group">
@@ -135,9 +144,10 @@
         <input
           type="text"
           class="form-control"
-          id="northpoint"
-          name="northpoint"
+          id="northuserpoint"
+          name="northuserpoint"
           placeholder="北家ポイント"
+          required
         />
       </div>
       <button type="submit" class="btn btn-success">登録</button>
@@ -145,7 +155,7 @@
     <hr />
     <h3>本日の成績</h3>
     <div class="matchlog">
-      <table class="table">
+      <table class="table" id="match">
         <thead>
           <tr>
             <th scope="col" style="width: 10%;">局</th>
@@ -155,7 +165,7 @@
             <th scope="col" style="width: 20%;">北家</th>
           </tr>
           <tr>
-            <th><div>名前</div></th>
+            <th></th>
             <th>
               <div id="eastUser" class="user" contenteditable="true"></div>
             </th>
@@ -170,15 +180,7 @@
             </th>
           </tr>
         </thead>
-        <tbody>
-          <!-- <tr>
-            <td><div>1</div></td>
-            <td><div id="eastUser" class="user" contenteditable="true"></div></td>
-            <td><div id="southUser" class="user" contenteditable="true"></div></td>
-            <td><div id="westUser" class="user" contenteditable="true"></div></td>
-            <td><div id="northUser" class="user" contenteditable="true"></div></t>     
-          </tr> -->
-        </tbody>
+        <tbody></tbody>
       </table>
     </div>
     <script src="./js/match.js"></script>

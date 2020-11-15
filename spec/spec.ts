@@ -119,8 +119,8 @@ describe("The express server", () => {
         expect(JSON.parse(res.text)).to.deep.equal(expected);
       });
 
-      it("POST /api/users/:id/match-logs", async () => {
-        const res = await request.post("/api/users/1/match-logs").send({
+      it("POST /api/match-logs", async () => {
+        const res = await request.post("/api/match-logs").send({
           eastuser: {
             id: "1",
           },

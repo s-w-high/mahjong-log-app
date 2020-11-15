@@ -13,7 +13,6 @@ $("form").submit(function() {
     data: JSON.stringify(data),
   })
     .done(() => {
-      alert("登録完了しました！");
       getData();
     })
     .fail(() => {

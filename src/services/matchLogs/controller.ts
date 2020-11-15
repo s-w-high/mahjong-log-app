@@ -21,7 +21,7 @@ class MatchLogController extends BaseController {
     router.get("/match-logs", this.get);
     router.get("/users/:userId/match-logs", this.get);
     router.get("/users/:userId/match-logs/:matchId", this.get);
-    router.post("/users/:userId/match-logs", this.post);
+    router.post("/match-logs", this.post);
     router.patch("/match-logs/:matchId", this.patch);
     router.delete("/match-logs/:matchId", this.delete);
 

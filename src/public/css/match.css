@@ -9,3 +9,14 @@
 /* .user {
     border: solid 1px #6091d3;
 } */
+
+#match {
+  counter-reset: count;
+}
+#match tbody tr {
+  counter-increment: count;
+}
+
+#match tbody tr td:first-child::before {
+  content: counter(count);
+}
