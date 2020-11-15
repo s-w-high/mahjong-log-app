@@ -62,7 +62,6 @@ class UserController extends BaseController {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    console.log(req.body);
     try {
       const userDetails = req.body;
       const user = await this.manager.createUser(userDetails);

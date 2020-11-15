@@ -88,7 +88,6 @@ $("#edit").click(function() {
   if (patchUserEmail) {
     patchData["email"] = patchUserEmail;
   }
-  console.log(patchData);
   $.ajax({
     url: baseURL + "/api/users/" + userId,
     type: "patch",
