@@ -6,6 +6,7 @@ import loggerMiddleware from "./middleware/logger";
 import UserController from "./services/users/controller";
 import errorHandler from "./middleware/errorHandler";
 import MatchLogController from "./services/matchLogs/controller";
+import TeamController from "./services/teams/controller";
 
 const path = require("path");
 
@@ -90,7 +91,11 @@ export function getDefaultApp(appSecret: string) {
   return new App({
     appSecret,
     port: 3000,
-    services: [new UserController(), new MatchLogController()],
+    services: [
+      new UserController(),
+      new MatchLogController(),
+      new TeamController(),
+    ],
     middleware: [
       bodyParser.json(),
       bodyParser.urlencoded({ extended: true }),

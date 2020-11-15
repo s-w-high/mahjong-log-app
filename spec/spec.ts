@@ -9,6 +9,7 @@ import { getDefaultApp } from "../src/app";
 import User from "../src/entities/User";
 import testUserData from "../spec/mockData/users.json";
 import testMatchLogData from "./mockData/matchLogs.json";
+import testTeamData from "./mockData/teams.json";
 
 chai.use(chaiHttp);
 const expect = chai.expect;
@@ -35,6 +36,59 @@ describe("The express server", () => {
   });
 
   describe("Mahjong App", () => {
+    describe("teams test", () => {
+      it("GET /api/teams all team", async () => {
+        const res = await request.get("/api/teams");
+        expect(res).to.have.status(200);
+        expect(JSON.parse(res.text)).to.deep.equal(testTeamData);
+      });
+
+      it("GET /api/teams ghost team", async () => {
+        const res = await request.get("/api/teams/999");
+        expect(res).to.have.status(404);
+      });
+
+      it("GET /api/teams/:teamId one team", async () => {
+        const res = await request.get("/api/teams/1");
+
+        expect(res).to.have.status(200);
+        expect(JSON.parse(res.text)).to.deep.equal({
+          id: 1,
+          teamname: "赤坂ドリブンズ",
+        });
+      });
+
+      it("POST /api/teams", async () => {
+        const res = await request.post("/api/teams").send({
+          teamname: "アマチュア",
+        });
+
+        expect(res).to.have.status(201);
+        await tearDownRequest.delete("/api/teams/9");
+      });
+
+      it("PATCH /api/teams/:teamId", async () => {
+        const res = await request.patch("/api/teams/3").send({
+          teamname: "test",
+        });
+
+        expect(res).to.have.status(200);
+        await tearDownRequest.patch("/api/teams/3").send({
+          teamname: "back",
+        });
+      });
+
+      it("DELETE /api/teams", async () => {
+        await tearDownRequest.post("/api/teams").send({
+          teamname: "アマチュア",
+        });
+
+        const res = await request.delete("/api/teams/9");
+
+        expect(res).to.have.status(200);
+      });
+    });
+
     describe("users test", () => {
       it("GET /api/users:username one user", async () => {
         const res = await request.get("/api/users/1");
@@ -42,7 +96,6 @@ describe("The express server", () => {
         expect(JSON.parse(res.text)).to.deep.equal({
           id: 1,
           username: "園田賢",
-          team: "1",
           email: "",
         });
       });
@@ -62,7 +115,9 @@ describe("The express server", () => {
       it("POST /api/users", async () => {
         const res = await request.post("/api/users").send({
           username: "tanaka",
-          team: "test",
+          team: {
+            id: "1",
+          },
           email: "tanaka@tanaka.com",
           password: "xxxxxx",
         });
@@ -85,7 +140,9 @@ describe("The express server", () => {
       it("DELETE /api/users", async () => {
         await tearDownRequest.post("/api/users").send({
           username: "test",
-          team: "test",
+          team: {
+            id: "1",
+          },
           email: "test@nri.co.jp",
           password: "xxxxxx",
         });

@@ -55,6 +55,11 @@
 このアプリでは以下のエンドポイントを受け付けます。
 |エンドポイント|HTTP メソッド|説明|
 |-|-|-|
+|`/api/teams`|GET| チームの一覧を返します。|
+|`/api/teams/:teamId`|GET| 指定した ID のチームの情報を返します。|
+|`/api/teams`|POST|チームを追加します。|
+|`/api/teams/:teamId`|PATCH|指定した ID のチームの情報を変更します。|
+|`/api/teams/:teamId`|DELETE|指定した ID のチームを削除します。|
 |`/api/users`|GET| ユーザーの一覧を返します。|
 |`/api/users/:userId`|GET| 指定した ID のユーザー情報を返します。|
 |`/api/users/team/:teamId`|GET| 指定したチームのユーザー情報を返します。|

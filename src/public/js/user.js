@@ -1,4 +1,5 @@
 const baseURL = "http://localhost:3000";
+let team = {};
 
 $("form").submit(function() {
   var data = $("form").serializeArray();
@@ -32,6 +33,7 @@ parseJson = function(data) {
 
 $(document).ready(function() {
   getData();
+  getTeamData();
 });
 
 function getData() {
@@ -43,12 +45,46 @@ function getData() {
   });
 }
 
-$("#search").click(function() {
+function getTeamData() {
+  $.ajax({
+    url: baseURL + "/api/teams",
+    dataType: "json",
+  }).done((data) => {
+    let html = "";
+    for (let i = 0; i < data.length; i++) {
+      html +=
+        '<option value="' + data[i].id + '"> ' + data[i].teamname + "</option>";
+    }
+    $("#teamId").append(html);
+    team = data;
+  });
+}
+
+$("#searchUser").click(function() {
   $(".table tbody").append("");
 
   const userId = document.getElementById("userId").value;
   $.ajax({
     url: baseURL + "/api/users/" + userId,
+    dataType: "json",
+  })
+    .done((data) => {
+      let dataArr = [];
+      dataArr.push(data);
+      drawTable(dataArr);
+    })
+    .fail(() => {
+      alert("エラーが発生しました。");
+    });
+});
+
+$("#searchTeam").click(function() {
+  $(".table tbody").append("");
+
+  const teamId = document.getElementById("teamId").value;
+  console.log(teamId);
+  $.ajax({
+    url: baseURL + "/api/users/team/" + teamId,
     dataType: "json",
   })
     .done((data) => {
