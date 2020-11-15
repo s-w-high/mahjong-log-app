@@ -96,6 +96,10 @@ describe("The express server", () => {
         expect(JSON.parse(res.text)).to.deep.equal({
           id: 1,
           username: "園田賢",
+          team: {
+            id: 1,
+            teamname: "赤坂ドリブンズ",
+          },
           email: "",
         });
       });

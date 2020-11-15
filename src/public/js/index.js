@@ -1,4 +1,76 @@
 const baseURL = "http://localhost:3000";
+function getAllTeam() {
+  $.ajax({
+    url: baseURL + "/api/teams",
+    dataType: "json",
+  })
+    .done((data) => {
+      $("#getAllTeam").empty();
+      $("#getAllTeam").append(JSON.stringify(data));
+    })
+    .fail(() => {
+      alert("エラーが発生しました。");
+    });
+}
+
+function getTeam() {
+  $.ajax({
+    url: baseURL + "/api/teams/1",
+    dataType: "json",
+  })
+    .done((data) => {
+      $("#getTeam").empty();
+      $("#getTeam").append(JSON.stringify(data));
+    })
+    .fail(() => {
+      alert("エラーが発生しました。");
+    });
+}
+
+function addTeam() {
+  $.ajax({
+    url: baseURL + "/api/teams",
+    type: "post",
+    contentType: "application/json",
+    scriptCharset: "utf-8",
+    data: JSON.stringify({
+      teamname: "test",
+    }),
+  })
+    .done((data, status, xhr) => {
+      $("#addTeam").empty();
+      $("#addTeam").append("status:" + xhr.status);
+    })
+    .fail(() => {
+      alert("エラーが発生しました。");
+    });
+}
+
+function updateTeam() {
+  $.ajax({
+    url: baseURL + "/api/teams/4",
+    type: "patch",
+    data: {
+      teamname: "test",
+    },
+  })
+    .done((data, status, xhr) => {
+      $("#updateTeam").empty();
+      $("#updateTeam").append("status:" + xhr.status);
+    })
+    .fail(() => {
+      alert("エラーが発生しました。");
+    });
+}
+function deleteTeam() {
+  $.ajax({
+    url: baseURL + "/api/teams/2",
+    type: "delete",
+  }).done((data, status, xhr) => {
+    $("#deleteTeam").empty();
+    $("#deleteTeam").append("status:" + xhr.status);
+  });
+}
 function getAllUser() {
   $.ajax({
     url: baseURL + "/api/users",

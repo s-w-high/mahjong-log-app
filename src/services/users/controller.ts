@@ -40,7 +40,7 @@ class UserController extends BaseController {
         let resultUser = [];
         _.pick(
           user.forEach((user) => {
-            resultUser.push(_.pick(user, ["id", "username", "email"]));
+            resultUser.push(_.pick(user, ["id", "username", "team", "email"]));
           })
         );
         res.json(resultUser);
@@ -51,7 +51,7 @@ class UserController extends BaseController {
           res.status(404).send({ error: "user not found" });
           return;
         }
-        res.json(_.pick(user, ["id", "username", "email"]));
+        res.json(_.pick(user, ["id", "username", "team", "email"]));
       } else if (req.params.teamId) {
         const team = req.params.teamId;
         const user = await this.manager.getUserByTeam(team);
@@ -59,7 +59,7 @@ class UserController extends BaseController {
           res.status(404).send({ error: "user not found" });
           return;
         }
-        res.json(_.pick(user, ["id", "username", "email"]));
+        res.json(_.pick(user, ["id", "username", "team", "email"]));
       }
     } catch (err) {
       next(err);
@@ -73,9 +73,9 @@ class UserController extends BaseController {
   ): Promise<void> => {
     try {
       const userDetails = req.body;
-      const user = await this.manager.createUser(userDetails);
+      await this.manager.createUser(userDetails);
 
-      res.status(201).json(_.pick(user, ["id", "username", "team"]));
+      res.status(201).end();
     } catch (err) {
       next(err);
     }
@@ -89,9 +89,9 @@ class UserController extends BaseController {
     try {
       const userId = req.params.userId;
       const newUserDetails = req.body;
-      const updatedUser = await this.manager.updateUser(userId, newUserDetails);
+      await this.manager.updateUser(userId, newUserDetails);
 
-      res.json(_.pick(updatedUser, ["id", "username", "team"]));
+      res.status(200).end();
     } catch (err) {
       next(err);
     }

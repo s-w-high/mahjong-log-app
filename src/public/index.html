@@ -54,6 +54,64 @@
       </thead>
       <tbody>
         <tr>
+          <td>/api/teams</td>
+          <td>GET</td>
+          <td>
+            チームの一覧を返します。
+          </td>
+          <td>
+            <button class="btn btn-success" onclick="getAllTeam()">
+              リクエスト
+            </button>
+          </td>
+          <td id="getAllTeam"></td>
+        </tr>
+        <tr>
+          <td>/api/teams/:teamId</td>
+          <td>GET</td>
+          <td>指定した ID のチームの情報を返します。</td>
+          <td>
+            <button class="btn btn-success" onclick="getTeam()">
+              リクエスト
+            </button>
+            <br />（1番：赤坂ドリブンズ）
+          </td>
+          <td id="getTeam"></td>
+        </tr>
+        <tr>
+          <td>/api/teams</td>
+          <td>POST</td>
+          <td>チームを追加します。</td>
+          <td>
+            <button class="btn btn-success" onclick="addTeam()">
+              リクエスト
+            </button>
+          </td>
+          <td id="addTeam"></td>
+        </tr>
+        <tr>
+          <td>/api/teams/:teamId</td>
+          <td>PATCH</td>
+          <td>指定した ID のチームの情報を変更します。</td>
+          <td>
+            <button class="btn btn-success" onclick="updateTeam()">
+              リクエスト
+            </button>
+          </td>
+          <td id="updateTeam"></td>
+        </tr>
+        <tr>
+          <td>/api/teams/:teamId</td>
+          <td>DELETE</td>
+          <td>指定した ID のチームを削除します。</td>
+          <td>
+            <button class="btn btn-success" onclick="deleteTeam()">
+              リクエスト
+            </button>
+          </td>
+          <td id="deleteTeam"></td>
+        </tr>
+        <tr>
           <td>/api/users</td>
           <td>GET</td>
           <td>

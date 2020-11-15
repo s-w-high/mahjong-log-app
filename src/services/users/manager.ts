@@ -15,22 +15,26 @@ class UserManager implements IManager {
   }
 
   public async getAllUser(): Promise<User[]> {
-    const user = await (await this.userRepository.find()).sort((a, b) => {
+    const user = await (
+      await this.userRepository.find({ relations: ["team"] })
+    ).sort((a, b) => {
       return parseInt(a.id) - parseInt(b.id);
     });
     return Promise.resolve(user);
   }
 
   public async getUser(userId: string): Promise<User> {
-    const user = await this.userRepository.findOne({ id: userId });
+    const user = await this.userRepository.findOne({
+      where: { id: userId },
+      relations: ["team"],
+    });
     return Promise.resolve(user);
   }
 
   public async getUserByTeam(teamId: string): Promise<User[]> {
     const user = await this.userRepository.find({
-      team: {
-        id: teamId,
-      },
+      where: { team: teamId },
+      relations: ["team"],
     });
     return Promise.resolve(user);
   }
