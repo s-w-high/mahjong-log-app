@@ -7,7 +7,59 @@ function getData() {
     dataType: "json",
   }).done((data) => {
     drawTable(data);
+    viewGrade(data);
   });
+}
+
+function viewGrade(data) {
+  // デモ用にsakaiがeastuserだとして計算する
+  const matchLog = data.map((matchData) => {
+    return matchData["eastuserpoint"];
+  });
+  let gradeArr = [];
+  for (let i = 0; i < data.length; i++) {
+    let rank = 1;
+    const point = data[i].eastuserpoint;
+    let arr = [
+      data[i].eastuserpoint,
+      data[i].southuserpoint,
+      data[i].westuserpoint,
+      data[i].northuserpoint,
+    ];
+    let sortArr = arr.sort((a, b) => {
+      return b - a;
+    });
+    if (sortArr.indexOf(point) == 0) {
+      rank = 1;
+    } else if (sortArr.indexOf(point) == 1) {
+      rank = 2;
+    } else if (sortArr.indexOf(point) == 2) {
+      rank = 3;
+    } else {
+      rank = 4;
+    }
+    gradeArr.push(rank);
+  }
+  let html =
+    "<tr><td>" +
+    gradeArr.filter((grade) => {
+      return grade == 1;
+    }).length +
+    "</td><td>" +
+    gradeArr.filter((grade) => {
+      return grade == 2;
+    }).length +
+    "</td><td>" +
+    gradeArr.filter((grade) => {
+      return grade == 3;
+    }).length +
+    "</td><td>" +
+    gradeArr.filter((grade) => {
+      return grade == 4;
+    }).length +
+    "</td></tr>";
+
+  $("#grade tbody").append(html);
 }
 
 function drawTable(data) {
