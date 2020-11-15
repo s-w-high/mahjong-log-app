@@ -65,7 +65,6 @@ function drawTable(data) {
   $(".table tbody").empty();
   let html = "";
   for (let i = 0; i < data.length; i++) {
-    //html += '<tr><td>' + data[i].id + '</td><td>' + data[i].username + '</td><td>' + data[i].email + '</td><td><button id="edit" class="btn btn-success">編集</button></td><td><button id="delete" class="btn btn-danger">削除</button></td></tr>';
     html +=
       "<tr><td>" +
       data[i].id +

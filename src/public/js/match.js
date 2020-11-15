@@ -23,7 +23,7 @@ function drawTable(data) {
       data[i].westuserpoint +
       "</td><td>" +
       data[i].northuserpoint +
-      "</td></tr>";
+      '</td><td><img src="./img/edit.png" style="width:20px; height:20px"></td><td><img src="./img/delete.png" style="width:20px; height:20px"></td></tr>';
   }
   $("#match tbody").append(html);
 }
