@@ -8,7 +8,6 @@ $("form").submit(function() {
   $.ajax({
     url: baseURL + "/api/users",
     type: "post",
-    dataType: "json",
     contentType: "application/json",
     scriptCharset: "utf-8",
     data: JSON.stringify(data),
@@ -41,6 +40,7 @@ function getData() {
     url: baseURL + "/api/users",
     dataType: "json",
   }).done((data) => {
+    console.log(data);
     drawTable(data);
   });
 }
@@ -96,15 +96,20 @@ $("#searchTeam").click(function() {
 
 function drawTable(data) {
   $(".table tbody").empty();
+
   let html = "";
   for (let i = 0; i < data.length; i++) {
+    let team = "";
+    if (data[i].team) {
+      team = data[i].team.teamname;
+    }
     html +=
       "<tr><td>" +
       data[i].id +
       "</td><td>" +
       data[i].username +
       "</td><td>" +
-      data[i].team.teamname +
+      team +
       "</td><td>" +
       data[i].email +
       "</td></tr>";
