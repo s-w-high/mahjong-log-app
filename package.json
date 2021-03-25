@@ -31,7 +31,7 @@
     "@types/chai-http": "^4.2.0",
     "@types/lodash.pick": "^4.4.6",
     "@types/mocha": "^7.0.2",
-    "@types/pg": "^7.14.3",
+    "@types/pg": "^7.14.10",
     "@types/uuid": "^7.0.2",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
