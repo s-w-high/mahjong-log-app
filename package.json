@@ -40,7 +40,7 @@
     "lodash.pick": "^4.4.0",
     "pg": "^8.5.0",
     "request": "^2.88.2",
-    "typeorm": "^0.2.29",
+    "typeorm": "^0.3.14",
     "typeorm-seeding": "^1.6.1",
     "uuid": "^7.0.2",
     "webpack": "^5.4.0"
